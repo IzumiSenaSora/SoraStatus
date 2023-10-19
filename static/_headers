@@ -1,0 +1,127 @@
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-XSS-Protection: 1; mode=block
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Embedder-Policy: require-corp
+  Cross-Origin-Resource-Policy: cross-origin
+  Origin-Agent-Cluster: ?1
+  Referrer-Policy: no-referrer
+  Powered-By: Light Of The Night Sky (LOTNS)
+  Author: Izumi Sena Sora (UnOrdinary)
+  Sec-GPC: 1
+  X-Robots-Tag: none
+  Cache-Control: public, no-cache, no-transform
+  Access-Control-Allow-Origin: *
+  Timing-Allow-Origin: *
+  Link: <https://soraapis.eu.org>; rel=preconnect; crossorigin, <https://sorafonts.eu.org>; rel=preconnect; crossorigin, <https://soracdns.eu.org>; rel=preconnect; crossorigin
+  Permissions-Policy: accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(), geolocation=(), gyroscope=(), keyboard-map=(), magnetometer=(), microphone=(), midi=(), navigation-override=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), sync-xhr=(), usb=(), web-share=(), xr-spatial-tracking=(), clipboard-read=(), clipboard-write=(), gamepad=(), speaker-selection=(), conversion-measurement=(), focus-without-user-activation=(), hid=(), idle-detection=(), interest-cohort=(), serial=(), sync-script=(), trust-token-redemption=(), window-placement=(), vertical-scroll=()
+
+/*.js
+  Cache-Control: public, max-age=31536000, immutable, no-transform
+
+/*.mjs
+  Cache-Control: public, max-age=31536000, immutable, no-transform
+
+/*.map
+  Cache-Control: public, max-age=31536000, immutable, no-transform
+
+/*.css
+  Cache-Control: public, max-age=31536000, immutable, no-transform
+
+/*.svg
+  Cache-Control: public, max-age=31536000, immutable, no-transform
+
+/*.gif
+  Cache-Control: public, max-age=31536000, immutable, no-transform
+
+/*.png
+  Cache-Control: public, max-age=31536000, immutable, no-transform
+
+/*.jpg
+  Cache-Control: public, max-age=31536000, immutable, no-transform
+
+/*.jpeg
+  Cache-Control: public, max-age=31536000, immutable, no-transform
+
+/*.cur
+  Cache-Control: public, max-age=31536000, immutable, no-transform
+
+/*.gz
+  Cache-Control: public, max-age=31536000, immutable, no-transform
+
+/*.mp4
+  Cache-Control: public, max-age=31536000, immutable, no-transform
+
+/*.ogg
+  Cache-Control: public, max-age=31536000, immutable, no-transform
+
+/*.ogv
+  Cache-Control: public, max-age=31536000, immutable, no-transform
+
+/*.webm
+  Cache-Control: public, max-age=31536000, immutable, no-transform
+
+/*.htc
+  Cache-Control: public, max-age=31536000, immutable, no-transform
+
+/*.bmp
+  Cache-Control: public, max-age=31536000, immutable, no-transform
+
+/*.svgz
+  Cache-Control: public, max-age=31536000, immutable, no-transform
+
+/*.heic
+  Cache-Control: public, max-age=31536000, immutable, no-transform
+
+/*.heif
+  Cache-Control: public, max-age=31536000, immutable, no-transform
+
+/*.avif
+  Cache-Control: public, max-age=31536000, immutable, no-transform
+
+/*.wasm
+  Cache-Control: public, max-age=31536000, immutable, no-transform
+
+/*.tflite
+  Cache-Control: public, max-age=31536000, immutable, no-transform
+
+/*.ico
+  Cache-Control: public, max-age=31536000, immutable, no-transform
+
+/*.ttf
+  Cache-Control: public, max-age=31536000, immutable, no-transform
+
+/*.otf
+  Cache-Control: public, max-age=31536000, immutable, no-transform
+
+/*.eot
+  Cache-Control: public, max-age=31536000, immutable, no-transform
+
+/*.woff
+  Cache-Control: public, max-age=31536000, immutable, no-transform
+
+/*.woff2
+  Cache-Control: public, max-age=31536000, immutable, no-transform
+
+/*.webp
+  Cache-Control: public, max-age=31536000, immutable, no-transform
+
+/*.webmanifest
+  Cache-Control: public, max-age=31536000, immutable, no-transform
+
+/*.json
+  Cache-Control: public, max-age=1800, immutable, no-transform
+
+/*.txt
+  Cache-Control: public, max-age=1800, immutable, no-transform
+
+/*.xml
+  Cache-Control: public, max-age=1800, immutable, no-transform
+
+/*.rss
+  Cache-Control: public, max-age=1800, immutable, no-transform
+
+/*.atom
+  Cache-Control: public, max-age=1800, immutable, no-transform
