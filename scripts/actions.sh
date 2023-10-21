@@ -26,11 +26,11 @@ if [[ "$CI" = "true" ]]; then
 	fi
 
 	if ! command -v npm >/dev/null 2>&1; then
-		sudo apt-get install nodejs
+		sudo apt-get install nodejs >/dev/null 2>&1
 	fi
 
 	if ! command -v prettier >/dev/null 2>&1; then
-		npm install --global prettier
+		npm install --global prettier >/dev/null 2>&1
 	fi
 
 	prettier \
@@ -47,11 +47,11 @@ if [[ "$CI" = "true" ]]; then
 		--write "**/*" "!storage/**"
 
 	if ! command -v shellcheck >/dev/null 2>&1; then
-		sudo apt-get install shellcheck
+		sudo apt-get install shellcheck >/dev/null 2>&1
 	fi
 
 	if ! command -v shfmt >/dev/null 2>&1; then
-		sudo apt-get install shfmt
+		sudo apt-get install shfmt >/dev/null 2>&1
 	fi
 
 	find . -type f '(' -name "*.sh" -o -name "*.bash" -o -name "*.bashrc" -o -name "*.bash_profile" -o -name "*.bash_login" -o -name "*.bash_logout" ')' | while read -r FILE; do
@@ -158,12 +158,8 @@ $(git status --short)" || true
 
 		source .env
 
-		if ! command -v npm >/dev/null 2>&1; then
-			sudo apt-get install nodejs
-		fi
-
 		if ! command -v vercel >/dev/null 2>&1; then
-			npm install --global vercel@latest
+			npm install --global vercel@latest >/dev/null 2>&1
 		fi
 
 		cd "$GITHUB_WORKSPACE"/static || exit
@@ -185,7 +181,7 @@ $(git status --short)" || true
 		rm -rf "$GITHUB_WORKSPACE"/static/.vercel/
 
 		if ! command -v netlify >/dev/null 2>&1; then
-			npm install --global netlify-cli
+			npm install --global netlify-cli >/dev/null 2>&1
 		fi
 
 		if [[ "$BRANCH" = "main" ]]; then
