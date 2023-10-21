@@ -86,11 +86,7 @@ if [[ "$CI" = "true" ]]; then
 			cd "$GITHUB_WORKSPACE"/static || exit
 
 			if ! command -v npm >/dev/null 2>&1; then
-				if ! command -v sudo >/dev/null 2>&1; then
-					apt-get install nodejs
-				else
-					sudo apt-get install nodejs
-				fi
+				sudo apt-get install nodejs
 			fi
 
 			if ! command -v vercel >/dev/null 2>&1; then
@@ -156,11 +152,7 @@ $(git status --short)" || true
 
 		elif [[ "$1" = "-p" || "$1" = "--pretty" ]]; then
 			if ! command -v npm >/dev/null 2>&1; then
-				if ! command -v sudo >/dev/null 2>&1; then
-					apt-get install nodejs
-				else
-					sudo apt-get install nodejs
-				fi
+				sudo apt-get install nodejs
 			fi
 
 			if ! command -v prettier >/dev/null 2>&1; then
@@ -206,12 +198,13 @@ $(git status --short)" || true
 
 	if [[ -d app ]]; then
 		if ! command -v index >/dev/null 2>&1; then
-			if ! command -v sudo >/dev/null 2>&1; then
-				wget --quiet --output-document "$PREFIX"/bin/index "https://staging.soracdns.eu.org/bin/index"
-				chmod +x "$PREFIX"/bin/index
+			sudo wget --quiet --output-document /bin/index "https://staging.soracdns.eu.org/bin/index"
+			sudo chmod +x /bin/index
+
+			if grep -q . /bin/index; then
+				index --generate
 			else
-				sudo wget --quiet --output-document /bin/index "https://staging.soracdns.eu.org/bin/index"
-				sudo chmod +x /bin/index
+				exit
 			fi
 		fi
 	fi
