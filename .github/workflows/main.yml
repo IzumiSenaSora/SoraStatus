@@ -10,9 +10,8 @@ jobs:
         runs-on: ubuntu-latest
         env:
             AGE: ${{ secrets.AGE }}
-            ENVIRONMENT: MAIN
-            PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
             TMP: /tmp
+
         steps:
             - name: Global Config
               run: |
@@ -28,22 +27,17 @@ jobs:
                   git config --global filter.crypt.smudge "openssl enc -d -chacha20 -S f6735bf5d3c9ed33 -a -pbkdf2 -pass env:AGE -"
                   git config --global filter.crypt.clean "openssl enc -chacha20 -salt -a -S f6735bf5d3c9ed33 -pbkdf2 -pass env:AGE -"
                   git config --global filter.crypt.required true
+
             - uses: actions/checkout@v4
               with:
                   token: ${{ secrets.PERSONAL_TOKEN }}
-            - name: Run
+
+            - name: Run Actions
               run: |
                   echo
 
                   if [[ -f scripts/actions.sh ]]; then
                       bash scripts/actions.sh
-                      bash scripts/actions.sh --pretty
                   fi
-            - name: Finalised
-              run: |
-                  echo
 
-                  if [[ -f scripts/actions.sh ]]; then
-                      bash scripts/actions.sh --end
-                  fi
         timeout-minutes: 5

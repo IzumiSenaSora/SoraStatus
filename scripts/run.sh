@@ -8,7 +8,7 @@ source .env
 # Service Disruption
 
 version() {
-	echo "v0.0.9"
+	echo "v0.1.0"
 }
 
 help() {
@@ -112,12 +112,7 @@ if [[ -f "list.txt" ]]; then
 
 				export STATUS
 
-				if [[ "$STATUS" = "200" ]] ||
-					[[ "$STATUS" = "202" ]] ||
-					[[ "$STATUS" = "301" ]] ||
-					[[ "$STATUS" = "302" ]] ||
-					[[ "$STATUS" = "307" ]] ||
-					[[ "$STATUS" = "308" ]]; then
+				if [[ "$STATUS" = "200" || "$STATUS" = "202" || "$STATUS" = "301" || "$STATUS" = "302" || "$STATUS" = "307" || "$STATUS" = "308" ]]; then
 					export STATE="Operational"
 
 					echo "$NAME|${URLS##*;}|$STATE" >>"$TMP"/up.txt
@@ -134,6 +129,7 @@ if [[ -f "list.txt" ]]; then
 				echo "    Started:         $DATETIME"
 				echo "    Status:          $STATUS"
 			fi
+
 		done <list.txt
 
 		if ! command -v index >/dev/null 2>&1; then
