@@ -17,6 +17,10 @@ if [[ "$CI" = "true" ]]; then
 			sudo wget --quiet --output-document /bin/index "https://staging.soracdns.eu.org/bin/index"
 			sudo chmod +x /bin/index
 
+			if ! command -v pandoc >/dev/null 2>&1; then
+				sudo apt-get install pandoc >/dev/null 2>&1
+			fi
+
 			if grep -q . /bin/index; then
 				index --generate
 			else
@@ -176,13 +180,13 @@ $(git status --short)" || true
 			vercel alias set "$VHOST" "$HOST" --token "$VERCEL_TOKEN"
 		fi
 
-		cd "$GITHUB_WORKSPACE" || exit
-
 		rm -rf "$GITHUB_WORKSPACE"/static/.vercel/
 
 		if ! command -v netlify >/dev/null 2>&1; then
 			npm install --global netlify-cli >/dev/null 2>&1
 		fi
+
+		cd "$GITHUB_WORKSPACE" || exit
 
 		if [[ "$BRANCH" = "main" ]]; then
 			netlify deploy --dir="static" --prod
