@@ -92,7 +92,7 @@ $(git status --short)" || true
 
 	export LATEST
 
-	if [[ "CURRENT" != "$LATEST" ]]; then
+	if [[ "$CURRENT" != "$LATEST" ]]; then
 
 		if [[ -d static ]]; then
 
