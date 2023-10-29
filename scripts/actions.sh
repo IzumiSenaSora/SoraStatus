@@ -2,13 +2,17 @@
 
 if [[ "$CI" = "true" ]]; then
 
-	CURRENT="$(git rev-parse HEAD)"
+	CURRENT="$(git log -1 --format=%ct)"
 	BRANCH="$(git branch --show-current)"
+	LATEST="$(date +%s)"
 	REPO="$(basename -s .git "$(git remote get-url origin)" | tr '[:upper:]' '[:lower:]')"
+	TIME_DIFF="$((CURRENT - LATEST))"
 
 	export CURRENT
 	export BRANCH
+	export LATEST
 	export REPO
+	export TIME_DIFF
 
 	if [[ -f scripts/run.sh ]]; then
 		bash scripts/run.sh
@@ -88,11 +92,7 @@ $(git status --short)" || true
 		git status --short
 	fi
 
-	LATEST="$(git rev-parse origin/"$BRANCH")"
-
-	export LATEST
-
-	if [[ "$CURRENT" != "$LATEST" ]]; then
+	if [[ "$TIME_DIFF" -lt 600 ]]; then
 
 		if [[ -d static ]]; then
 
