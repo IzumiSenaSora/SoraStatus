@@ -176,7 +176,7 @@ $(git status --short)" || true
 
 			cd "$GITHUB_WORKSPACE"/static || exit
 
-			if [[ "$GITHUB_WORKFLOW" = "Main" ]]; then
+			if [[ "$GITHUB_WORKFLOW" = "Main" && "$BRANCH" = "main" ]]; then
 				vercel pull --yes --environment=production --token "$VERCEL_TOKEN"
 				vercel build --prod --token "$VERCEL_TOKEN"
 				vercel deploy --prebuilt --prod --token "$VERCEL_TOKEN"
@@ -196,7 +196,7 @@ $(git status --short)" || true
 
 			cd "$GITHUB_WORKSPACE" || exit
 
-			if [[ "$GITHUB_WORKFLOW" = "Main" ]]; then
+			if [[ "$GITHUB_WORKFLOW" = "Main" && "$BRANCH" = "main" ]]; then
 				netlify deploy --dir="static" --prod
 			else
 				replace
