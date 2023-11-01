@@ -6,7 +6,7 @@ if [[ "$CI" = "true" ]]; then
 	BRANCH="$(git branch --show-current)"
 	LATEST="$(date +%s)"
 	REPO="$(basename -s .git "$(git remote get-url origin)" | tr '[:upper:]' '[:lower:]')"
-	TIME_DIFF="$((CURRENT - LATEST))"
+	TIME_DIFF="$((LATEST - CURRENT))"
 
 	export CURRENT
 	export BRANCH
