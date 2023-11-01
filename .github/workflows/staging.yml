@@ -17,6 +17,7 @@ jobs:
         env:
             AGE: ${{ secrets.AGE }}
             TMP: /tmp
+            TZ: Asia/Dhaka
 
         steps:
             - name: Global Config
