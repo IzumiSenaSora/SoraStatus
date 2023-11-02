@@ -14,9 +14,6 @@ if [[ "$CI" = "true" ]]; then
 	export REPO
 	export TIME_DIFF
 
-	sudo apt-get update
-	sudo apt-get upgrade -y
-
 	if [[ -f scripts/run.sh ]]; then
 		bash scripts/run.sh
 	fi
