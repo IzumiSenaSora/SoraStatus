@@ -43,7 +43,7 @@ jobs:
                   path: |
                        /usr/bin
                        ~/.npm
-                  key: ${{ runner.os }}-cache-${{ hashFiles('**') }}
+                  key: ${{ runner.os }}-cache-${{ hashFiles('/usr/bin/**', '~/.npm/**') }}
                   restore-keys: ${{ runner.os }}-cache-
 
             - name: Run Actions
