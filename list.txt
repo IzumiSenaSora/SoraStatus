@@ -33,7 +33,7 @@ SoraBlog|sorablog.eu.org
 #SoraChat|sorachat.eu.org
 About.SoraCloud|about.soracloud.eu.org
 #SoraCloud|soracloud.eu.org
-One.SoraDNS|one.soradns.eu.org|443
+One.SoraDNS|one.soradns.eu.org
 SoraDNS|soradns.eu.org
 #SoraFont|sorafont.eu.org
 SoraFonts|sorafonts.eu.org
