@@ -2,12 +2,12 @@
 <html lang="en" prefix="og: https://ogp.me/ns#" data-bs-theme="auto">
     <!-- Head -->
     <head>
-        <title>404 Not Found</title>
+        <title>404 Not Found - Client Error</title>
 
         <meta charset="utf-8" />
         <meta name="author" content="Izumi Sena Sora (UnOrdinary)" />
         <meta name="color-scheme" content="dark light" />
-        <meta name="description" property="og:description" content="404 Not Found - Client Error" />
+        <meta name="description" property="og:description" content="The requested page could not be found but may be available again in the future" />
         <meta name="theme-color" content="#712cf9" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -17,11 +17,11 @@
         <meta property="og:image:height" content="512" />
         <meta property="og:image:width" content="512" />
         <meta property="og:site_name" content="SoraStatus" />
-        <meta property="og:title" content="404 Not Found" />
+        <meta property="og:title" content="404 Not Found - Client Error" />
         <meta property="og:type" content="website" />
 
         <!-- Website Domain -->
-        <link rel="canonical" property="og:url" href="https://sorastatus.eu.org" />
+        <link rel="canonical" property="og:url" href="https://sorastatus.eu.org/404.html" />
 
         <!-- PreConnect SoraAPIs And SoraFonts -->
         <link rel="preconnect" href="https://soraapis.eu.org" crossorigin />
@@ -47,7 +47,7 @@
 
         <!-- JS From SoraAPIs -->
         <script src="https://soraapis.eu.org/js/bootstrap.bundle.min.js" crossorigin></script>
-        <script src="https://soraapis.eu.org/js/color-modes.js" crossorigin></script>
+        <script src="https://soraapis.eu.org/js/color.modes.js" crossorigin></script>
     </head>
 
     <!-- Body -->
@@ -63,10 +63,28 @@
 
             <main>
                 <div class="container text-center">
-                    <h1>404 Not Found</h1>
+                    <h1>404 Not Found - Client Error</h1>
                     <p class="lead">The requested page could not be found but may be available again in the future</p>
                     <p class="lead">
-                        <a href="index.html" class="btn btn-lg btn-light fw-bold border-white bg-white">Go Back</a>
+                        <button class="btn btn-primary btn-lg fw-bold" onclick="history.go(-1)">Go Back</button>
+                    </p>
+
+                    <h3 class="text-start">Server Information</h3>
+                    <p class="text-start">
+                        <b>User Agent:</b>
+                        <script>
+                            document.write(navigator.userAgent);
+                        </script>
+                        <br />
+                        <b>Date:</b>
+                        <script>
+                            document.write(new Date());
+                        </script>
+                        <br />
+                        <b>URI:</b>
+                        <script>
+                            document.write(window.location.href);
+                        </script>
                     </p>
                 </div>
             </main>
