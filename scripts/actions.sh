@@ -92,7 +92,7 @@ $(git status --short)" || true
 		git status --short
 	fi
 
-	if [[ "$TIME_DIFF" -lt 600 ]]; then
+	if [[ "$TIME_DIFF" -lt 3600 ]]; then
 
 		if [[ -d static ]]; then
 
