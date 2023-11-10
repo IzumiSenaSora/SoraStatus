@@ -2,8 +2,9 @@
 
 export BODY="true"
 export DESCRIPTION="Privacy Security Related Blog"
-export HOST="sorastatus.eu.org"
-export TITLE="SoraStatus"
+export NAME="SoraStatus"
+export TITLE="$NAME"
+export URL="sorastatus.eu.org"
 
 index --header
 
