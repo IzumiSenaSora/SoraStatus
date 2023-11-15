@@ -45,4 +45,4 @@ jobs:
                       bash scripts/actions.sh
                   fi
 
-        timeout-minutes: 5
+        timeout-minutes: 10
