@@ -1,6 +1,5 @@
 #!/bin/bash -e
 
-export BODY="true"
 export DESCRIPTION="Privacy Security Related Blog"
 export NAME="SoraStatus"
 export TITLE="$NAME"
@@ -155,7 +154,7 @@ if [[ -f $TMP/up.txt ]]; then
 	cat <<EOF
 
 <!-- Up -->
-<div class="row g-5">
+<div class="row">
 <div class="col-md-6">
 <div class="my-3">
 
