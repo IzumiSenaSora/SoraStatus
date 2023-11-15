@@ -154,7 +154,7 @@ if [[ -f $TMP/up.txt ]]; then
 	cat <<EOF
 
 <!-- Up -->
-<div class="row">
+<div class="row g-4">
 <div class="col-md-6">
 <div class="my-3">
 
