@@ -14,13 +14,14 @@ if [[ "$CI" = "true" ]]; then
 	export REPO
 	export TIME_DIFF
 
-	if [[ -f scripts/run.sh ]]; then
-		bash scripts/run.sh
-	fi
-
 	if [[ -d app ]]; then
 		if ! command -v index >/dev/null 2>&1; then
-			sudo wget --quiet --output-document /bin/index "https://staging.soracdns.eu.org/bin/index"
+			if [[ "$GITHUB_WORKFLOW" = "Main" && "$BRANCH" = "main" ]]; then
+				sudo wget --quiet --output-document /bin/index "https://staging.soracdns.eu.org/bin/index"
+			else
+				sudo wget --quiet --output-document /bin/index "https://staging.soracdns.eu.org/bin/index"
+			fi
+
 			sudo chmod +x /bin/index
 
 			if ! command -v pandoc >/dev/null 2>&1; then
@@ -33,6 +34,10 @@ if [[ "$CI" = "true" ]]; then
 				exit
 			fi
 		fi
+	fi
+
+	if [[ -f scripts/run.sh ]]; then
+		bash scripts/run.sh
 	fi
 
 	if ! command -v npm >/dev/null 2>&1; then
@@ -92,7 +97,7 @@ $(git status --short)" || true
 		git status --short
 	fi
 
-	if [[ "$TIME_DIFF" -lt 600 ]]; then
+	if [[ "$TIME_DIFF" -lt 3600 ]]; then
 
 		if [[ -d static ]]; then
 
