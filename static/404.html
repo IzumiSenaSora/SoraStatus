@@ -8,7 +8,7 @@
         <meta name="author" content="Izumi Sena Sora (UnOrdinary)" />
         <meta name="color-scheme" content="dark light" />
         <meta name="description" property="og:description" content="The requested page could not be found but may be available again in the future" />
-        <meta name="theme-color" content="#712cf9" />
+        <meta name="theme-color" content="#ffffff" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         <!-- OG Info Of Website -->
@@ -30,9 +30,9 @@
         <!-- Favicon -->
         <link rel="apple-touch-icon" href="https://soraapis.eu.org/apple-touch-icon.png" crossorigin />
         <link rel="icon" href="https://soraapis.eu.org/favicon.ico" crossorigin />
-        <link rel="icon" type="image/svg+xml" href="https://soraapis.eu.org/favicon.svg" crossorigin />
-        <link rel="manifest" href="https://soraapis.eu.org/manifest.webmanifest" crossorigin />
-        <link rel="mask-icon" href="https://soraapis.eu.org/mask-icon.svg" color="#1a1a1a" crossorigin />
+        <link rel="icon" href="https://soraapis.eu.org/favicon.svg" crossorigin />
+        <link rel="manifest" href="https://soraapis.eu.org/manifest.json" crossorigin />
+        <link rel="mask-icon" href="https://soraapis.eu.org/mask-icon.svg" color="#000000" crossorigin />
 
         <!-- LICENSE -->
         <link rel="license" href="https://soralicense.eu.org" crossorigin />
@@ -40,13 +40,14 @@
         <!-- ME -->
         <link rel="me" href="https://unordinary.eu.org" crossorigin />
 
-        <!-- CSS From SoraAPIs And SoraFonts -->
+        <!-- BOOTSTRAP.MIN.CSS From SoraAPIs -->
         <link rel="stylesheet" href="https://soraapis.eu.org/css/bootstrap.min.css" crossorigin />
-        <link rel="stylesheet" href="https://sorafonts.eu.org/css/bootstrap-icons.css" crossorigin />
+        <!-- FONTS.CSS From SoraFonts -->
         <link rel="stylesheet" href="https://sorafonts.eu.org/fonts.css" crossorigin />
+        <!-- BOOTSTRAP-ICONS.CSS From SoraFonts -->
+        <link rel="stylesheet" href="https://sorafonts.eu.org/css/bootstrap-icons.css" crossorigin />
 
-        <!-- JS From SoraAPIs -->
-        <script src="https://soraapis.eu.org/js/bootstrap.bundle.min.js" crossorigin></script>
+        <!-- COLOR.MODES.JS From SoraAPIs -->
         <script src="https://soraapis.eu.org/js/color.modes.js" crossorigin></script>
     </head>
     <!-- Head End -->
@@ -56,12 +57,19 @@
             <!-- Header Start -->
             <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
                 <a href="/index.html" class="d-flex align-items-center text-body-emphasis text-decoration-none">
-                    <img src="https://soraapis.eu.org/favicon.svg" class="bi me-2" width="40" height="32" />
+                    <!-- SVG SoraStatus Logo Start -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="bi me-2" width="40" height="32" fill="currentColor" viewBox="0 0 512 512">
+                        <path d="M439 256a182 182 0 1 0-364 0 182 182 0 0 0 364 0zm-344 0a162 162 0 1 1 325 0 162 162 0 0 1-325 0z" />
+                        <path d="M382 230c2 8 3 17 3 26a10 10 0 1 0 20 0l-3-30a10 10 0 0 0-20 4zm-11-32a10 10 0 1 0 18-9c-25-50-76-81-132-81a10 10 0 1 0 0 20c49 0 92 27 114 70zM197 60h2c19-6 39-9 58-9a10 10 0 1 0 0-20c-21 0-43 3-63 9a10 10 0 0 0 3 20zM43 266c5 0 10-4 10-10 0-77 42-147 110-182a10 10 0 1 0-9-18A226 226 0 0 0 33 256c0 6 4 10 10 10zm-30 32c6-1 10-6 9-12l-2-30a10 10 0 1 0-20 0l2 33a10 10 0 0 0 11 9zm16 23a10 10 0 0 0-19 5c11 41 33 78 62 109a10 10 0 0 0 15 0c4-4 4-10 0-14-27-28-47-63-58-100zm284 131c-19 6-39 9-58 9a10 10 0 1 0 0 20c21 0 43-3 63-9a10 10 0 0 0-5-20zm156-206c-5 0-10 4-10 10 0 77-42 147-110 182a10 10 0 1 0 9 18 226 226 0 0 0 121-200c0-6-4-10-10-10zm41-23a10 10 0 0 0-20 3l2 30a10 10 0 1 0 20 0l-2-33zm-15-25c6-1 9-7 7-12-11-41-33-78-62-109a10 10 0 0 0-15 14c27 28 47 63 58 100a10 10 0 0 0 12 7z" />
+                        <text x="50%" y="50%" alignment-baseline="middle" font-family="Brolink" font-size="26" font-weight="bold" text-anchor="middle">SoraStatus</text>
+                    </svg>
+                    <!-- SVG SoraStatus Logo End -->
                     <span class="fs-4">SoraStatus</span>
                 </a>
             </header>
             <!-- Header End -->
 
+            <!-- Main Start -->
             <main>
                 <!-- Error Start -->
                 <div class="container text-center">
@@ -91,8 +99,9 @@
                 </div>
                 <!-- Error End -->
             </main>
+            <!-- Main End -->
 
-            <!-- Footer -->
+            <!-- Footer Start -->
             <footer class="pt-5 my-5 text-body-secondary text-center border-top">
                 Copyright &copy;
                 <script>
@@ -100,7 +109,10 @@
                 </script>
                 SoraStatus
             </footer>
+            <!-- Footer End -->
         </div>
+        <!-- BOOTSTRAP.BUNDLE.MIN.JS From SoraAPIs -->
+        <script src="https://soraapis.eu.org/js/bootstrap.bundle.min.js" crossorigin></script>
     </body>
     <!-- Body End Tag -->
 </html>
