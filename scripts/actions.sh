@@ -14,67 +14,48 @@ if [[ "$CI" = "true" ]]; then
 	export REPO
 	export TIME_DIFF
 
-	if [[ -d app ]]; then
-		if ! command -v index >/dev/null 2>&1; then
-			if [[ "$GITHUB_WORKFLOW" = "Main" && "$BRANCH" = "main" ]]; then
-				sudo wget --quiet --output-document /bin/index "https://staging.soracdns.eu.org/bin/index"
-			else
-				sudo wget --quiet --output-document /bin/index "https://staging.soracdns.eu.org/bin/index"
-			fi
-
-			sudo chmod +x /bin/index
-
-			if ! command -v pandoc >/dev/null 2>&1; then
-				sudo apt-get install pandoc >/dev/null 2>&1
-			fi
-
-			if grep -q . /bin/index; then
-				index --generate
-			else
-				exit
-			fi
-		fi
-	fi
-
 	if [[ -f scripts/run.sh ]]; then
 		bash scripts/run.sh
+	fi
+
+	if [[ -d app ]]; then
+		if [[ "$GITHUB_WORKFLOW" = "Main" && "$BRANCH" = "main" ]]; then
+			sudo wget --quiet --output-document /bin/index "https://staging.soracdns.eu.org/bin/index"
+		else
+			sudo wget --quiet --output-document /bin/index "https://staging.soracdns.eu.org/bin/index"
+		fi
+
+		if grep -q . /bin/index; then
+			sudo chmod +x /bin/index
+			index --generate
+		fi
 	fi
 
 	if ! command -v npm >/dev/null 2>&1; then
 		sudo apt-get install nodejs >/dev/null 2>&1
 	fi
 
-	if ! command -v prettier >/dev/null 2>&1; then
-		npm install --global prettier >/dev/null 2>&1
+	if [[ "$GITHUB_WORKFLOW" = "Main" && "$BRANCH" = "main" ]]; then
+		sudo wget --quiet --output-document /bin/pretty "https://staging.soracdns.eu.org/bin/pretty"
+	else
+		sudo wget --quiet --output-document /bin/pretty "https://staging.soracdns.eu.org/bin/pretty"
 	fi
 
-	prettier \
-		--bracket-same-line \
-		--html-whitespace-sensitivity ignore \
-		--no-config \
-		--no-editorconfig \
-		--print-width 200 \
-		--tab-width 4 \
-		--end-of-line lf \
-		--trailing-comma es5 \
-		--ignore-path=null \
-		--ignore-unknown \
-		--write "**/*" "!storage/**"
-
-	if ! command -v shellcheck >/dev/null 2>&1; then
-		sudo apt-get install shellcheck >/dev/null 2>&1
+	if grep -q . /bin/pretty; then
+		sudo chmod +x /bin/pretty
+		pretty
 	fi
 
-	if ! command -v shfmt >/dev/null 2>&1; then
-		sudo apt-get install shfmt >/dev/null 2>&1
+	if [[ "$GITHUB_WORKFLOW" = "Main" && "$BRANCH" = "main" ]]; then
+		sudo wget --quiet --output-document /bin/shpretty "https://staging.soracdns.eu.org/bin/shpretty"
+	else
+		sudo wget --quiet --output-document /bin/shpretty "https://staging.soracdns.eu.org/bin/shpretty"
 	fi
 
-	find . -type f '(' -name "*.sh" -o -name "*.bash" -o -name "*.bashrc" -o -name "*.bash_profile" -o -name "*.bash_login" -o -name "*.bash_logout" ')' | while read -r FILE; do
-		chmod +x "$FILE"
-		shellcheck --check-sourced --external-sources --norc "$FILE"
-		shfmt -w "$FILE"
-		ls "$FILE"
-	done
+	if grep -q . /bin/shpretty; then
+		sudo chmod +x /bin/shpretty
+		shpretty
+	fi
 
 	if [[ "$GITHUB_WORKFLOW" = "Main" ]]; then
 		if [[ -n $(git status --short) ]]; then
