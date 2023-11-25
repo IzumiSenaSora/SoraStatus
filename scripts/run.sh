@@ -26,7 +26,7 @@ if [[ -f "list.txt" ]]; then
 	if nc -z -w 2 1.1.1.1 53 &>/dev/null; then
 		echo "Internet Connected"
 
-		rm -rf "$TMP"/*.{html,xml,txt}
+		rm -rf "$TMP"/*.{html,xml,txt} up.txt down.txt
 
 		while IFS='|' read -r ONE TWO THREE; do
 
@@ -115,28 +115,23 @@ if [[ -f "list.txt" ]]; then
 				if [[ "$STATUS" = "200" || "$STATUS" = "202" || "$STATUS" = "301" || "$STATUS" = "302" || "$STATUS" = "307" || "$STATUS" = "308" ]]; then
 					export STATE="Operational"
 
-					echo "$NAME|${URLS##*;}|$STATE" >>"$TMP"/up.txt
+					echo "$NAME|${URLS##*;}|$STATE" >>up.txt
 				else
 					export STATE="Service Disruption"
 
 					bash scripts/alert.sh
 
-					echo "$NAME|${URLS##*;}|$STATE|$DATETIME" >>"$TMP"/down.txt
+					echo "$NAME|${URLS##*;}|$STATE|$DATETIME" >>down.txt
 					echo "$NAME|${URLS##*;}|$STATE|$DATETIME||" | cat - history.txt >"$TMP"/history-n.txt && mv "$TMP"/history-n.txt history.txt
 				fi
 
 				echo "    State:           $STATE"
 				echo "    Started:         $DATETIME"
 				echo "    Status:          $STATUS"
+
 			fi
 
 		done <list.txt
-
-		if ! command -v index >/dev/null 2>&1; then
-			exit
-		else
-			index --generate
-		fi
 	else
 		echo >&2 "No Internet Connection"
 	fi

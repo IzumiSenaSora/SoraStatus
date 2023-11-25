@@ -1,0 +1,11 @@
+LOTNS|lotns.eu.org|Operational
+SoraAPIs|soraapis.eu.org|Operational
+SoraBlog|sorablog.eu.org|Operational
+About.SoraCloud|about.soracloud.eu.org|Operational
+One.SoraDNS|one.soradns.eu.org|Operational
+SoraDNS|soradns.eu.org|Operational
+SoraFonts|sorafonts.eu.org|Operational
+SoraID|soraid.eu.org|Operational
+SoraLicense|soralicense.eu.org|Operational
+SoraStatus|sorastatus.eu.org|Operational
+UnOrdinary|unordinary.eu.org|Operational

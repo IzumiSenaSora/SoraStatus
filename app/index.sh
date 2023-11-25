@@ -16,8 +16,8 @@ $(cat maintenance.txt)
 EOF
 fi
 
-if [[ -f $TMP/down.txt ]]; then
-	if [[ "$([ -r "$TMP"/down.txt ] && wc -l <"$TMP"/down.txt)" = "1" ]]; then
+if [[ -f down.txt ]]; then
+	if [[ "$([ -r down.txt ] && wc -l <down.txt)" = "1" ]]; then
 		cat <<EOF
 
 <!-- Alert -->
@@ -27,7 +27,7 @@ Some Systems are Experiencing Problems
 </div>
 EOF
 
-	elif [[ "$([ -r "$TMP"/down.txt ] && wc -l <"$TMP"/down.txt)" -gt "1" ]]; then
+	elif [[ "$([ -r down.txt ] && wc -l <down.txt)" -gt "1" ]]; then
 		cat <<EOF
 
 <!-- Alert -->
@@ -91,10 +91,10 @@ $([[ "$STARTED" != "" ]] && echo "$STARTED")
 </div>
 EOF
 
-	done <"$TMP"/down.txt
+	done <down.txt
 }
 
-if [[ -f $TMP/down.txt ]]; then
+if [[ -f down.txt ]]; then
 	cat <<EOF
 
 <!-- Down -->
@@ -145,10 +145,10 @@ $STATE
 </div>
 EOF
 
-	done <"$TMP"/up.txt
+	done <up.txt
 }
 
-if [[ -f $TMP/up.txt ]]; then
+if [[ -f up.txt ]]; then
 	cat <<EOF
 
 <!-- Up -->
