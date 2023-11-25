@@ -1,9 +1,7 @@
 #!/bin/bash -e
 
 export DESCRIPTION="Privacy Security Related Blog"
-export NAME="SoraStatus"
 export TITLE="$NAME"
-export URL="sorastatus.eu.org"
 
 index --header
 
