@@ -7,7 +7,7 @@
 	<ttl>1</ttl>
 	<generator>SoraStatus Server</generator>
 	<language>en-us</language>
-	<lastBuildDate>Thu, 21 Sep 2023 23:42:53</lastBuildDate>
+	<lastBuildDate>Wed, 29 Nov 2023 14:54:11</lastBuildDate>
 	<copyright>2023 SoraStatus. All Rights Reserved.</copyright>
 	<image>
 		<url>https://soraapis.eu.org/opengraph.png</url>
@@ -15,6 +15,15 @@
 		<link>https://sorastatus.eu.org</link>
 	</image>
 
+	<!-- SoraStatus (sorastatus.eu.org) -->
+	<item>
+		<title>SoraStatus (Service Disruption)</title>
+		<link>https://sorastatus.eu.org</link>
+		<pubDate>Wed, 29 Nov 2023 14:54:11</pubDate>
+		<description><p>Investigating</p></description>
+		<guid>https://sorastatus.eu.org/#8974105350a1a77b8cec44a017457382ff58aa82ac0a48d9ede43c36b38a5ed0</guid>
+		<category></category>
+	</item>
 	<!-- One.SoraDNS (one.soradns.eu.org) -->
 	<item>
 		<title>One.SoraDNS (Service Disruption)</title>
