@@ -12,7 +12,6 @@
   Author: Izumi Sena Sora (UnOrdinary)
   Sec-GPC: 1
   X-Robots-Tag: none
-  Cache-Control: public, no-cache, no-transform
   Access-Control-Allow-Origin: *
   Timing-Allow-Origin: *
   Link: <https://soraapis.eu.org>; rel=preconnect; crossorigin, <https://sorafonts.eu.org>; rel=preconnect; crossorigin, <https://soracdns.eu.org>; rel=preconnect; crossorigin

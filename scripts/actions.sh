@@ -189,6 +189,21 @@ $(git status --short)" || true
 				netlify deploy --dir="static"
 			fi
 
+			if ! command -v wrangler >/dev/null 2>&1; then
+				npm install --global wrangler >/dev/null 2>&1
+			fi
+
+			HOST="${HOST#staging.}"
+			HOST="${HOST//./-}"
+
+			if [[ "$GITHUB_WORKFLOW" = "Main" && "$BRANCH" = "main" ]]; then
+				wrangler pages project create "$HOST" --production-branch main
+				wrangler pages deploy ./static --project-name "$HOST" --branch main
+			else
+				wrangler pages project create "$HOST" --production-branch main
+				wrangler pages deploy ./static --project-name "$HOST" --branch staging
+			fi
+
 		fi
 	fi
 fi
