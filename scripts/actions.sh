@@ -105,105 +105,44 @@ $(git status --short)" || true
 				done
 			}
 
-			if [[ "$REPO" = "aeonquake" ]]; then
-				export VHOST="aeonquake-unordinary.vercel.app"
-				export HOST="staging.aeonquake.eu.org"
-
-			elif [[ "$REPO" = "lotns" ]]; then
-				export VHOST="lotns-unordinary.vercel.app"
-				export HOST="staging.lotns.eu.org"
-
-			elif [[ "$REPO" = "notryan" ]]; then
-				export VHOST="notryan-unordinary.vercel.app"
-				export HOST="staging.notryan.eu.org"
-
-			elif [[ "$REPO" = "soraapis" ]]; then
-				export VHOST="soraapis-unordinary.vercel.app"
-				export HOST="staging.soraapis.eu.org"
-
-			elif [[ "$REPO" = "sorablog" ]]; then
-				export VHOST="sorablog-unordinary.vercel.app"
-				export HOST="staging.sorablog.eu.org"
-
-			elif [[ "$REPO" = "soracdns" ]]; then
-				export VHOST="soracdns-unordinary.vercel.app"
-				export HOST="staging.soracdns.eu.org"
-
-			elif [[ "$REPO" = "about_soracloud" ]]; then
-				export VHOST="about-soracloud-unordinary.vercel.app"
-				export HOST="staging.about.soracloud.eu.org"
-
-			elif [[ "$REPO" = "soradns" ]]; then
-				export VHOST="soradns-unordinary.vercel.app"
-				export HOST="staging.soradns.eu.org"
-
-			elif [[ "$REPO" = "sorafonts" ]]; then
-				export VHOST="sorafonts-unordinary.vercel.app"
-				export HOST="staging.sorafonts.eu.org"
-
-			elif [[ "$REPO" = "soralicense" ]]; then
-				export VHOST="soralicense-unordinary.vercel.app"
-				export HOST="staging.soralicense.eu.org"
-
-			elif [[ "$REPO" = "sorastatus" ]]; then
-				export VHOST="sorastatus-unordinary.vercel.app"
-				export HOST="staging.sorastatus.eu.org"
-
-			elif [[ "$REPO" = "unordinary" ]]; then
-				export VHOST="unordinary-unordinary.vercel.app"
-				export HOST="staging.unordinary.eu.org"
-			fi
-
 			source .env
-
-			if ! command -v vercel >/dev/null 2>&1; then
-				npm install --global vercel@latest >/dev/null 2>&1
-			fi
-
-			cd "$GITHUB_WORKSPACE"/static || exit
-
-			if [[ "$GITHUB_WORKFLOW" = "Main" && "$BRANCH" = "main" ]]; then
-				vercel pull --yes --environment=production --token "$VERCEL_TOKEN"
-				vercel build --prod --token "$VERCEL_TOKEN"
-				vercel deploy --prebuilt --prod --token "$VERCEL_TOKEN"
-			else
-				replace
-				vercel pull --yes --environment=preview --token "$VERCEL_TOKEN"
-				vercel build --token "$VERCEL_TOKEN"
-				vercel deploy --prebuilt --token "$VERCEL_TOKEN"
-				vercel alias set "$VHOST" "$HOST" --token "$VERCEL_TOKEN"
-			fi
-
-			rm -rf "$GITHUB_WORKSPACE"/static/.vercel/
-
-			if ! command -v netlify >/dev/null 2>&1; then
-				npm install --global netlify-cli >/dev/null 2>&1
-			fi
 
 			cd "$GITHUB_WORKSPACE" || exit
 
 			if [[ "$GITHUB_WORKFLOW" = "Main" && "$BRANCH" = "main" ]]; then
-				netlify deploy --dir="static" --prod
+
+				if ! command -v vercel >/dev/null 2>&1; then
+					npm install --global vercel@latest >/dev/null 2>&1
+				fi
+
+				vercel pull \
+					--cwd static \
+					--environment production \
+					--token "$VERCEL_TOKEN" \
+					--yes
+
+				vercel build \
+					--cwd static \
+					--prod \
+					--token "$VERCEL_TOKEN"
+
+				vercel deploy \
+					--cwd static \
+					--prebuilt \
+					--prod \
+					--token "$VERCEL_TOKEN"
+
+				rm -r -f "$GITHUB_WORKSPACE"/static/.vercel/
 			else
+				if ! command -v netlify >/dev/null 2>&1; then
+					npm install --global netlify-cli >/dev/null 2>&1
+				fi
+
 				replace
-				netlify deploy --dir="static"
+				netlify deploy \
+					--dir "static" \
+					--prod
 			fi
-
-			if ! command -v wrangler >/dev/null 2>&1; then
-				npm install --global wrangler >/dev/null 2>&1
-			fi
-
-			HOST="${HOST#staging.}"
-			HOST="${HOST//./-}"
-
-			if [[ "$GITHUB_WORKFLOW" = "Main" && "$BRANCH" = "main" ]]; then
-				wrangler pages project create "$HOST" --production-branch main
-				wrangler pages deploy ./static --project-name "$HOST" --branch main
-			else
-				wrangler pages project create "$HOST" --production-branch main
-				wrangler pages deploy ./static --project-name "$HOST" --branch staging
-			fi
-
 		fi
 	fi
 fi
