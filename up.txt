@@ -7,4 +7,5 @@ SoraDNS|soradns.eu.org|Operational
 SoraFonts|sorafonts.eu.org|Operational
 SoraID|soraid.eu.org|Operational
 SoraLicense|soralicense.eu.org|Operational
+SoraStatus|sorastatus.eu.org|Operational
 UnOrdinary|unordinary.eu.org|Operational
