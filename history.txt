@@ -1,4 +1,3 @@
-One.SoraDNS|one.soradns.eu.org|Service Disruption|Thu, 21 Sep 2023 23:42:53||
 SoraStatus|sorastatus.eu.org|Service Disruption|Wed, 20 Sep 2023 01:04:39|Wed, 20 Sep 2023 07:00:00|Netlify deploy script error now (fixed)
 SoraID|soraid.eu.org|Service Disruption|Tue, 12 Sep 2023 23:07:08|Tue, 12 Sep 2023 23:40:00|Some edge functions logs missing
 SoraID|soraid.eu.org|Service Disruption|Tue, 12 Sep 2023 22:37:05|Tue, 12 Sep 2023 23:00:00|Some edge functions logs missing
