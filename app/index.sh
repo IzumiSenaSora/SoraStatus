@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-# Description: Privacy Security Related Blog
+# Description: Server Status of Light Of The Night Sky's Services.
 
 index --header
 
