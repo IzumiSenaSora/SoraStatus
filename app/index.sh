@@ -1,7 +1,6 @@
 #!/bin/bash -e
 
-export DESCRIPTION="Privacy Security Related Blog"
-export TITLE="$NAME"
+# Description: Privacy Security Related Blog
 
 index --header
 
