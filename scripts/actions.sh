@@ -57,7 +57,7 @@ if [[ "$CI" = "true" ]]; then
 		shpretty
 	fi
 
-	if [[ "$GITHUB_WORKFLOW" = "Main" ]]; then
+	if [[ "$GITHUB_WORKFLOW" = "Main" || "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]]; then
 		if [[ -n $(git status --short) ]]; then
 			git add --all
 
