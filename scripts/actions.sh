@@ -28,7 +28,7 @@ if [[ "$CI" = "true" ]]; then
 		if grep -q . /bin/index; then
 			sudo chmod +x /bin/index
 
-			if [[ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]]; then
+			if [[ "$BRANCH" = "staging" || "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]]; then
 				index --generate --icons
 			else
 				index --generate
