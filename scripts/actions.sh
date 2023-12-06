@@ -20,24 +20,18 @@ if [[ "$CI" = "true" ]]; then
 
 	if [[ "$GITHUB_WORKFLOW" = "Main" && "$BRANCH" = "main" ]]; then
 		sudo wget --quiet --output-document /bin/pretty "https://staging.soracdns.eu.org/bin/pretty"
+		sudo wget --quiet --output-document /bin/shpretty "https://staging.soracdns.eu.org/bin/shpretty"
 	else
 		sudo wget --quiet --output-document /bin/pretty "https://staging.soracdns.eu.org/bin/pretty"
+		sudo wget --quiet --output-document /bin/shpretty "https://staging.soracdns.eu.org/bin/shpretty"
 	fi
 
 	if grep -q . /bin/pretty; then
 		sudo chmod +x /bin/pretty
-		pretty
-	fi
-
-	if [[ "$GITHUB_WORKFLOW" = "Main" && "$BRANCH" = "main" ]]; then
-		sudo wget --quiet --output-document /bin/shpretty "https://staging.soracdns.eu.org/bin/shpretty"
-	else
-		sudo wget --quiet --output-document /bin/shpretty "https://staging.soracdns.eu.org/bin/shpretty"
 	fi
 
 	if grep -q . /bin/shpretty; then
 		sudo chmod +x /bin/shpretty
-		shpretty
 	fi
 
 	if [[ -f scripts/run.sh ]]; then
@@ -53,12 +47,22 @@ if [[ "$CI" = "true" ]]; then
 
 		if grep -q . /bin/index; then
 			sudo chmod +x /bin/index
-			index --version
+			if command -v index >/dev/null 2>&1; then
+				index --version
 
-			if [[ "$BRANCH" = "staging" || "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]]; then
-				index --generate --icons
-			else
-				index --generate
+				if [[ "$BRANCH" = "staging" || "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]]; then
+					index --generate --icons
+				else
+					index --generate
+				fi
+			fi
+		else
+			if command -v pretty >/dev/null 2>&1; then
+				pretty
+			fi
+
+			if command -v shpretty >/dev/null 2>&1; then
+				shpretty
 			fi
 		fi
 	fi
