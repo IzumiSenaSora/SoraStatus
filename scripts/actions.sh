@@ -14,28 +14,6 @@ if [[ "$CI" = "true" ]]; then
 	export REPO
 	export TIME_DIFF
 
-	if [[ -f scripts/run.sh ]]; then
-		bash scripts/run.sh
-	fi
-
-	if [[ -d app ]]; then
-		if [[ "$GITHUB_WORKFLOW" = "Main" && "$BRANCH" = "main" ]]; then
-			sudo wget --quiet --output-document /bin/index "https://staging.soracdns.eu.org/bin/index/index-v0.1.0-Alpha"
-		else
-			sudo wget --quiet --output-document /bin/index "https://staging.soracdns.eu.org/bin/index/index-v0.1.0-Alpha"
-		fi
-
-		if grep -q . /bin/index; then
-			sudo chmod +x /bin/index
-
-			if [[ "$BRANCH" = "staging" || "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]]; then
-				index --generate --icons
-			else
-				index --generate
-			fi
-		fi
-	fi
-
 	if ! command -v npm >/dev/null 2>&1; then
 		sudo apt-get install nodejs >/dev/null 2>&1
 	fi
@@ -60,6 +38,29 @@ if [[ "$CI" = "true" ]]; then
 	if grep -q . /bin/shpretty; then
 		sudo chmod +x /bin/shpretty
 		shpretty
+	fi
+
+	if [[ -f scripts/run.sh ]]; then
+		bash scripts/run.sh
+	fi
+
+	if [[ -d app ]]; then
+		if [[ "$GITHUB_WORKFLOW" = "Main" && "$BRANCH" = "main" ]]; then
+			sudo wget --quiet --output-document /bin/index "https://staging.soracdns.eu.org/bin/index/index-v0.1.0-Alpha"
+		else
+			sudo wget --quiet --output-document /bin/index "https://staging.soracdns.eu.org/bin/index/index-v0.1.0-Alpha"
+		fi
+
+		if grep -q . /bin/index; then
+			sudo chmod +x /bin/index
+			index --version
+
+			if [[ "$BRANCH" = "staging" || "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]]; then
+				index --generate --icons
+			else
+				index --generate
+			fi
+		fi
 	fi
 
 	if [[ "$GITHUB_WORKFLOW" = "Main" || "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]]; then
