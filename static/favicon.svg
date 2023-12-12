@@ -25,11 +25,11 @@
         }
         .left {
             transform-origin: center;
-            animation: rotate-left infinite linear 20s;
+            animation: rotate-left infinite linear 15s;
         }
         .right {
             transform-origin: center;
-            animation: rotate-right infinite linear 20s;
+            animation: rotate-right infinite linear 15s;
         }
         @font-face {
             font-family: "Brolink";

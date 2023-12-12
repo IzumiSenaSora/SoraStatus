@@ -28,11 +28,11 @@
         <link rel="preconnect" href="https://sorafonts.eu.org" crossorigin />
 
         <!-- Favicon -->
-        <link rel="apple-touch-icon" href="https://sorastatus.eu.org/apple-touch-icon.png" />
-        <link rel="icon" href="https://sorastatus.eu.org/favicon.ico" sizes="64x64" />
-        <link rel="icon" href="https://sorastatus.eu.org/favicon.svg" sizes="any" type="image/svg+xml" />
-        <link rel="manifest" href="https://sorastatus.eu.org/manifest.json" />
-        <link rel="mask-icon" href="https://sorastatus.eu.org/mask-icon.svg" color="#9013fe" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="icon" href="/favicon.ico" sizes="64x64" />
+        <link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml" />
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="mask-icon" href="/mask-icon.svg" color="#9013fe" />
 
         <!-- LICENSE -->
         <link rel="license" href="https://soralicense.eu.org" crossorigin />
@@ -52,68 +52,67 @@
     </head>
     <!-- Head End -->
     <!-- Body Start Tag -->
-    <body>
-        <div class="container-fluid py-3">
-            <!-- Header Start -->
-            <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
-                <a href="/index.html" class="d-flex align-items-center link-body-emphasis text-decoration-none">
-                    <img class="bi me-2" width="40" height="32" src="https://sorastatus.eu.org/favicon.svg" />
-                    <span class="fs-4 fw-semibold">SoraStatus</span>
-                </a>
-            </header>
-            <!-- Header End -->
-
-            <!-- Main Start -->
-            <main>
-                <!-- Error Start -->
-                <div class="container text-center">
-                    <h1>404 Not Found - Client Error</h1>
-                    <p class="lead">The requested page could not be found but may be available again in the future</p>
-                    <p class="lead">
-                        <button class="btn btn-primary btn-lg fw-bold" onclick="history.go(-1)">Go Back</button>
-                    </p>
-
-                    <!-- Jumbotrons Start -->
-                    <div class="my-1 mb-3">
-                        <div class="position-relative p-5 text-center text-muted bg-body border rounded-5">
-                            <h1 class="text-body-emphasis">Client Information</h1>
-                        </div>
-                    </div>
-                    <!-- Jumbotrons End -->
-
-                    <p class="text-start">
-                        <b>User Agent:</b>
-                        <script>
-                            document.write(navigator.userAgent);
-                        </script>
-                        <br />
-                        <b>Date:</b>
-                        <script>
-                            document.write(new Date());
-                        </script>
-                        <br />
-                        <b>Uri:</b>
-                        <script>
-                            document.write(window.location.href);
-                        </script>
-                    </p>
-                </div>
-                <!-- Error End -->
-            </main>
-            <!-- Main End -->
-
-            <!-- Footer Start -->
-            <footer class="pt-5 my-5 text-body-secondary text-center border-top">
-                Copyright &copy;
-                <script>
-                    document.write(new Date().getFullYear());
-                </script>
-                SoraStatus
-            </footer>
-            <!-- Footer End -->
+    <body class="container-fluid py-3">
+        <div class="splash-screen">
+            <div style="z-index: 9999" class="bg-body position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
+                <img width="200" height="200" src="/favicon.svg" />
+            </div>
         </div>
+        <!-- Header Start -->
+        <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+            <a href="/" class="d-flex align-items-center link-body-emphasis text-decoration-none">
+                <img class="bi me-2" width="40" height="32" src="/favicon.svg" />
+                <span class="fs-4 fw-semibold">SoraStatus</span>
+            </a>
+        </header>
+        <!-- Header End -->
+
+        <!-- Main Start -->
+        <main>
+            <!-- Error Start -->
+            <div class="container text-center">
+                <h1>404 Not Found - Client Error</h1>
+                <p class="lead">The requested page could not be found but may be available again in the future</p>
+                <p class="lead"><button class="btn btn-primary btn-lg fw-bold" onclick="history.go(-1)">Go Back</button></p>
+
+                <!-- Jumbotrons Start -->
+                <div class="my-1 mb-3">
+                    <div class="position-relative p-5 text-center text-muted bg-body border rounded-5">
+                        <h1 class="text-body-emphasis">Client Information</h1>
+                    </div>
+                </div>
+                <!-- Jumbotrons End -->
+
+                <p class="lead">
+                    <b>User Agent:</b>
+                    <script>
+                        document.write(navigator.userAgent);
+                    </script>
+                </p>
+                <p class="lead">
+                    <b>Date:</b>
+                    <script>
+                        document.write(new Date());
+                    </script>
+                </p>
+            </div>
+            <!-- Error End -->
+        </main>
+        <!-- Main End -->
+
+        <!-- Footer Start -->
+        <footer class="pt-5 my-5 text-body-secondary text-center border-top">
+            Copyright &copy;
+            <script>
+                document.write(new Date().getFullYear());
+            </script>
+            SoraStatus
+        </footer>
+        <!-- Footer End -->
         <!-- BOOTSTRAP.BUNDLE.MIN.JS From SoraAPIs -->
         <script src="https://soraapis.eu.org/js/bootstrap.bundle.min.js" crossorigin></script>
+        <!-- SPLASHSCREEN.JS From SoraAPIs -->
+        <script src="https://soraapis.eu.org/js/splashscreen.js" crossorigin></script>
     </body>
     <!-- Body End Tag -->
 </html>
