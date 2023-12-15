@@ -40,9 +40,9 @@ if [[ "$CI" = "true" ]]; then
 
 	if [[ -d app ]]; then
 		if [[ "$GITHUB_WORKFLOW" = "Main" && "$BRANCH" = "main" ]]; then
-			sudo wget --quiet --output-document /bin/index "https://staging.soracdns.eu.org/bin/index/index-v0.1.0-Alpha"
+			sudo wget --quiet --output-document /bin/index "https://staging.soracdns.eu.org/bin/index/v0.1.0-Alpha"
 		else
-			sudo wget --quiet --output-document /bin/index "https://staging.soracdns.eu.org/bin/index/index-v0.1.0-Alpha"
+			sudo wget --quiet --output-document /bin/index "https://staging.soracdns.eu.org/bin/index/v0.1.0-Alpha"
 		fi
 
 		if grep -q . /bin/index; then
