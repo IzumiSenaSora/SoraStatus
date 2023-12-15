@@ -151,7 +151,8 @@ $(git status --short)" || true
 				replace
 				netlify deploy \
 					--dir "static" \
-					--prod
+					--prod \
+					--auth "$NETLIFY_AUTH_TOKEN"
 			fi
 		fi
 	fi
