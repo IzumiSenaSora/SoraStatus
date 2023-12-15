@@ -36,6 +36,8 @@ jobs:
                   git config --global filter.crypt.required true
 
             - uses: actions/checkout@v4
+              with:
+                  ref: 'staging'
 
             - name: Run Actions
               run: |
