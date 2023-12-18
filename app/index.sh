@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash
 
 # Description: Server Status of Light Of The Night Sky's Services.
 
