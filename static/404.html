@@ -11,33 +11,24 @@
         <meta name="theme-color" content="#131313" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <!-- OG Info Of Website -->
-        <meta property="og:image" content="https://sorastatus.eu.org/opengraph.png" />
-        <meta property="og:image:alt" content="SoraStatus Logo" />
-        <meta property="og:image:height" content="1080" />
-        <meta property="og:image:width" content="1080" />
-        <meta property="og:site_name" content="SoraStatus" />
-        <meta property="og:title" content="404 Not Found - Client Error" />
-        <meta property="og:type" content="website" />
-
-        <!-- Website Domain -->
+        <!-- Canonical Url -->
         <link rel="canonical" property="og:url" href="https://sorastatus.eu.org/404.html" />
 
         <!-- PreConnect SoraAPIs And SoraFonts -->
         <link rel="preconnect" href="https://soraapis.eu.org" crossorigin />
         <link rel="preconnect" href="https://sorafonts.eu.org" crossorigin />
 
-        <!-- Favicon -->
+        <!-- Icon -->
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="icon" href="/favicon.ico" sizes="64x64" />
         <link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="mask-icon" href="/mask-icon.svg" color="#9013fe" />
 
-        <!-- LICENSE -->
+        <!-- License -->
         <link rel="license" href="https://soralicense.eu.org" crossorigin />
 
-        <!-- ME -->
+        <!-- Me -->
         <link rel="me" href="https://unordinary.eu.org" crossorigin />
 
         <!-- BOOTSTRAP.MIN.CSS From SoraAPIs -->
@@ -51,7 +42,7 @@
         <script src="https://soraapis.eu.org/js/color.modes.js" crossorigin></script>
     </head>
     <!-- Head End -->
-    <!-- Body Start Tag -->
+    <!-- Body Start -->
     <body class="container-fluid py-3">
         <div class="splash-screen">
             <div style="z-index: 9999" class="bg-body position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
@@ -66,15 +57,21 @@
             </a>
         </header>
         <!-- Header End -->
-
         <!-- Main Start -->
         <main>
             <!-- Error Start -->
-            <div class="container text-center">
-                <h1>404 Not Found - Client Error</h1>
-                <p class="lead">The requested page could not be found but may be available again in the future</p>
-                <p class="lead"><button class="btn btn-primary btn-lg fw-bold" onclick="history.go(-1)">Go Back</button></p>
-
+            <div class="container">
+                <!-- Heroes Start -->
+                <div class="px-4 py-5 my-5 text-center">
+                    <h1 class="display-5 fw-bold text-body-emphasis">404 Not Found - Client Error</h1>
+                    <div class="col-lg-6 mx-auto">
+                        <p class="lead mb-4">The requested page could not be found but may be available again in the future</p>
+                        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                            <a href="#" onclick="history.go(-1)"><button type="button" class="btn btn-primary btn-lg">Go Back</button></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Heroes End -->
                 <!-- Jumbotrons Start -->
                 <div class="my-1 mb-3">
                     <div class="position-relative p-5 text-center text-muted bg-body border rounded-5">
@@ -82,19 +79,20 @@
                     </div>
                 </div>
                 <!-- Jumbotrons End -->
-
-                <p class="lead">
-                    <b>User Agent:</b>
-                    <script>
-                        document.write(navigator.userAgent);
-                    </script>
-                </p>
-                <p class="lead">
-                    <b>Date:</b>
-                    <script>
-                        document.write(new Date());
-                    </script>
-                </p>
+                <div class="py-5">
+                    <p class="lead">
+                        <b>User Agent:</b>
+                        <script>
+                            document.write(navigator.userAgent);
+                        </script>
+                    </p>
+                    <p class="lead">
+                        <b>Date:</b>
+                        <script>
+                            document.write(new Date());
+                        </script>
+                    </p>
+                </div>
             </div>
             <!-- Error End -->
         </main>
@@ -114,6 +112,6 @@
         <!-- SPLASHSCREEN.JS From SoraAPIs -->
         <script src="https://soraapis.eu.org/js/splashscreen.js" crossorigin></script>
     </body>
-    <!-- Body End Tag -->
+    <!-- Body End -->
 </html>
-<!-- Version: 0.1.0-Alpha -->
+<!-- Version: 0.1.1-Alpha -->
