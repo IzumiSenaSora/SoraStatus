@@ -2,7 +2,7 @@
 
 # Description: Server Status of Light Of The Night Sky's Services.
 
-index --header
+index Html --start
 
 if grep -q . maintenance.txt; then
 	cat <<EOF
@@ -274,4 +274,4 @@ $(cat "$TMP"/gen_index.xml)
 EOF
 fi
 
-index --footer
+index Html --end

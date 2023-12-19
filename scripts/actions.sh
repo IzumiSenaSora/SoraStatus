@@ -98,7 +98,7 @@ $(git status --short)" || true
 
 			replace() {
 
-				find . -type f '(' -name "*.html" -o -name "*.css" -o -name "*.js" -o -name "*.json" ')' | while read -r FILE; do
+				find . -type f '(' -name "*.html" -o -name "*.css" -o -name "*.js" -o -name "*.json" -o -name "*.xml" ')' | while read -r FILE; do
 
 					sed -i "s%https://aeonquake.eu.org%https://staging.aeonquake.eu.org%g" "$FILE"
 					sed -i "s%https://lotns.eu.org%https://staging.lotns.eu.org%g" "$FILE"
