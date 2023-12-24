@@ -48,13 +48,13 @@ EOF
 fi
 
 gen_down() {
-	while IFS='|' read -r NAME HOSTS STATE STARTED; do
+	while IFS='|' read -r BRAND HOSTS STATE STARTED; do
 
 		cat <<EOF
 <div class="card mb-3 border-danger">
-<a data-bs-toggle="collapse" href="#${NAME}" role="button" aria-expanded="false" aria-controls="${NAME}" class="card-body link-underline link-underline-opacity-0">
+<a data-bs-toggle="collapse" href="#${BRAND}" role="button" aria-expanded="false" aria-controls="${BRAND}" class="card-body link-underline link-underline-opacity-0">
 <div class="d-flex w-100 justify-content-between">
-<h5 class="card-title mb-1">$NAME</h5>
+<h5 class="card-title mb-1">$BRAND</h5>
 <i class="bi bi-x-circle-fill text-danger"></i>
 </div>
 <p class="card-text mb-1">$HOSTS</p>
@@ -68,7 +68,7 @@ $([[ "$STARTED" != "" ]] && echo "$STARTED")
 </small>
 </a>
 
-<div class="collapse" id="${NAME}">
+<div class="collapse" id="${BRAND}">
 <div class="card-body">
 <h5 class="card-title text-body-secondary">$STATE</h5>
 <h6 class="card-text fw-normal">
@@ -101,13 +101,13 @@ EOF
 fi
 
 gen_up() {
-	while IFS='|' read -r NAME HOSTS STATE; do
+	while IFS='|' read -r BRAND HOSTS STATE; do
 
 		cat <<EOF
 <div class="card mb-3 border-success">
-<a data-bs-toggle="collapse" href="#${NAME}" role="button" aria-expanded="false" aria-controls="${NAME}" class="card-body link-underline link-underline-opacity-0">
+<a data-bs-toggle="collapse" href="#${BRAND}" role="button" aria-expanded="false" aria-controls="${BRAND}" class="card-body link-underline link-underline-opacity-0">
 <div class="d-flex w-100 justify-content-between">
-<h5 class="card-title mb-1">$NAME</h5>
+<h5 class="card-title mb-1">$BRAND</h5>
 <i class="bi bi-check-circle-fill text-success"></i>
 </div>
 <p class="card-text mb-1">$HOSTS</p>
@@ -121,7 +121,7 @@ $STATE
 </small>
 </a>
 
-<div class="collapse" id="${NAME}">
+<div class="collapse" id="${BRAND}">
 <div class="card-body">
 <h5 class="card-title text-body-secondary">$STATE</h5>
 <h6 class="card-text fw-normal">
@@ -155,7 +155,7 @@ EOF
 fi
 
 gen_history() {
-	while IFS='|' read -r NAME HOSTS STATE STARTED RESOLVED ISSUE; do
+	while IFS='|' read -r BRAND HOSTS STATE STARTED RESOLVED ISSUE; do
 
 		ID="$(echo -n "$STARTED" | sha256sum | cut -c 1-64)"
 		export ID
@@ -172,7 +172,7 @@ gen_history() {
 <div class="card mb-3 border-secondary">
 <a data-bs-toggle="collapse" href="#${ID}" role="button" aria-expanded="false" aria-controls="${ID}" class="card-body link-underline link-underline-opacity-0">
 <div class="d-flex w-100 justify-content-between">
-<h5 class="card-title mb-1">$NAME</h5>
+<h5 class="card-title mb-1">$BRAND</h5>
 <i class="bi bi-x-circle-fill text-secondary"></i>
 </div>
 <p class="card-text mb-1">$HOSTS</p>
@@ -204,13 +204,13 @@ $([[ "$STARTED" != "" ]] && echo "$STARTED")
 EOF
 
 		cat <<EOF >>"$TMP"/gen_index.xml
-	<!-- $NAME ($HOSTS) -->
+	<!-- $BRAND ($HOSTS) -->
 	<item>
-		<title>$([[ "$RESOLVED" != "" ]] && echo "[Resolved] ")$NAME ($STATE)</title>
-		<link>https://sorastatus.eu.org</link>
+		<title>$([[ "$RESOLVED" != "" ]] && echo "[Resolved] ")$BRAND ($STATE)</title>
+		<link>https://$URL</link>
 		<pubDate>$([[ "$STARTED" != "" ]] && echo "$STARTED")</pubDate>
 		<description><p>$([[ "$ISSUE" != "" ]] && echo "$ISSUE" || echo "Investigating")</p></description>
-		<guid>https://sorastatus.eu.org/#${ID}</guid>
+		<guid>https://$URL/#${ID}</guid>
 		<category>$([[ "$RESOLVED" != "" ]] && echo "$RESOLVED")</category>
 	</item>
 EOF
@@ -237,18 +237,18 @@ if [[ -f $TMP/gen_index.xml ]]; then
 <?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
 <channel>
-	<title>SoraStatus</title>
-	<link>https://sorastatus.eu.org</link>
+	<title>$NAME</title>
+	<link>https://$URL</link>
 	<description>Past Incident History</description>
 	<ttl>1</ttl>
-	<generator>SoraStatus Server</generator>
+	<generator>$NAME Server</generator>
 	<language>en-us</language>
 	<lastBuildDate>$([[ -r $TMP/date.txt ]] && date --utc "+%a, %d %b %Y %H:%M:%S" --file "$TMP"/date.txt)</lastBuildDate>
-	<copyright>$(date --utc "+%Y") SoraStatus. All Rights Reserved.</copyright>
+	<copyright>$(date --utc "+%Y") $NAME. All Rights Reserved.</copyright>
 	<image>
-		<url>https://sorastatus.eu.org/opengraph.png</url>
-		<title>SoraStatus</title>
-		<link>https://sorastatus.eu.org</link>
+		<url>https://$URL/opengraph.png</url>
+		<title>$NAME</title>
+		<link>https://$URL</link>
 	</image>
 
 $(cat "$TMP"/gen_index.xml)
