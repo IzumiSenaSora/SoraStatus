@@ -48,12 +48,7 @@ EOF
 fi
 
 gen_down() {
-	while IFS='|' read -r ONE TWO THREE FOUR; do
-
-		NAME="$ONE"
-		URLS="$TWO"
-		STATE="$THREE"
-		STARTED="$FOUR"
+	while IFS='|' read -r NAME HOSTS STATE STARTED; do
 
 		cat <<EOF
 <div class="card mb-3 border-danger">
@@ -62,7 +57,7 @@ gen_down() {
 <h5 class="card-title mb-1">$NAME</h5>
 <i class="bi bi-x-circle-fill text-danger"></i>
 </div>
-<p class="card-text mb-1">$URLS</p>
+<p class="card-text mb-1">$HOSTS</p>
 <small class="card-text text-body-secondary">
 <span class="badge bg-danger-subtle border border-danger text-danger-emphasis rounded-pill text-capitalize">
 $STATE
@@ -106,11 +101,7 @@ EOF
 fi
 
 gen_up() {
-	while IFS='|' read -r ONE TWO THREE; do
-
-		NAME="$ONE"
-		URLS="$TWO"
-		STATE="$THREE"
+	while IFS='|' read -r NAME HOSTS STATE; do
 
 		cat <<EOF
 <div class="card mb-3 border-success">
@@ -119,7 +110,7 @@ gen_up() {
 <h5 class="card-title mb-1">$NAME</h5>
 <i class="bi bi-check-circle-fill text-success"></i>
 </div>
-<p class="card-text mb-1">$URLS</p>
+<p class="card-text mb-1">$HOSTS</p>
 <small class="card-text text-body-secondary">
 <span class="badge bg-success-subtle border border-success text-success-emphasis rounded-pill text-capitalize">
 $STATE
@@ -164,14 +155,7 @@ EOF
 fi
 
 gen_history() {
-	while IFS='|' read -r ONE TWO THREE FOUR FIVE SIX; do
-
-		NAME="$ONE"
-		URLS="$TWO"
-		STATE="$THREE"
-		STARTED="$FOUR"
-		RESOLVED="$FIVE"
-		ISSUE="$SIX"
+	while IFS='|' read -r NAME HOSTS STATE STARTED RESOLVED ISSUE; do
 
 		ID="$(echo -n "$STARTED" | sha256sum | cut -c 1-64)"
 		export ID
@@ -191,7 +175,7 @@ gen_history() {
 <h5 class="card-title mb-1">$NAME</h5>
 <i class="bi bi-x-circle-fill text-secondary"></i>
 </div>
-<p class="card-text mb-1">$URLS</p>
+<p class="card-text mb-1">$HOSTS</p>
 <small class="card-text text-body-secondary">
 <span class="badge bg-secondary-subtle border border-secondary text-secondary-emphasis rounded-pill text-capitalize">
 $STATE
@@ -220,7 +204,7 @@ $([[ "$STARTED" != "" ]] && echo "$STARTED")
 EOF
 
 		cat <<EOF >>"$TMP"/gen_index.xml
-	<!-- $NAME ($URLS) -->
+	<!-- $NAME ($HOSTS) -->
 	<item>
 		<title>$([[ "$RESOLVED" != "" ]] && echo "[Resolved] ")$NAME ($STATE)</title>
 		<link>https://sorastatus.eu.org</link>
@@ -262,7 +246,7 @@ if [[ -f $TMP/gen_index.xml ]]; then
 	<lastBuildDate>$([[ -r $TMP/date.txt ]] && date --utc "+%a, %d %b %Y %H:%M:%S" --file "$TMP"/date.txt)</lastBuildDate>
 	<copyright>$(date --utc "+%Y") SoraStatus. All Rights Reserved.</copyright>
 	<image>
-		<url>https://soraapis.eu.org/opengraph.png</url>
+		<url>https://sorastatus.eu.org/opengraph.png</url>
 		<title>SoraStatus</title>
 		<link>https://sorastatus.eu.org</link>
 	</image>
