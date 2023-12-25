@@ -39,31 +39,35 @@ if [[ "$CI" = "true" ]]; then
 	fi
 
 	if [[ -d app ]]; then
-		if [[ "$GITHUB_WORKFLOW" = "Main" && "$BRANCH" = "main" ]]; then
-			sudo wget --quiet --output-document /bin/index "https://staging.soracdns.eu.org/bin/index/v0.1.0-Alpha"
+
+		if [[ -f static/bin/index-latest ]]; then
+			cp static/bin/index-latest /bin/index
 		else
-			sudo wget --quiet --output-document /bin/index "https://staging.soracdns.eu.org/bin/index-latest"
+			if [[ "$GITHUB_WORKFLOW" = "Main" && "$BRANCH" = "main" ]]; then
+				sudo wget --quiet --output-document /bin/index "https://staging.soracdns.eu.org/bin/index/v0.1.3-Alpha"
+			else
+				sudo wget --quiet --output-document /bin/index "https://staging.soracdns.eu.org/bin/index-latest"
+			fi
 		fi
 
-		if grep -q . /bin/index; then
-			sudo chmod +x /bin/index
-			if command -v index >/dev/null 2>&1; then
-				index Version
+		sudo chmod +x /bin/index
 
-				if [[ "$BRANCH" = "staging" || "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]]; then
-					index Generate --icons
-				else
-					index Generate
-				fi
-			fi
-		else
-			if command -v pretty >/dev/null 2>&1; then
-				pretty
-			fi
+		if command -v index >/dev/null 2>&1; then
+			index --version
 
-			if command -v shpretty >/dev/null 2>&1; then
-				shpretty
+			if [[ "$BRANCH" = "staging" || "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]]; then
+				index Generate --icons
+			else
+				index Generate
 			fi
+		fi
+	else
+		if command -v pretty >/dev/null 2>&1; then
+			pretty
+		fi
+
+		if command -v shpretty >/dev/null 2>&1; then
+			shpretty
 		fi
 	fi
 
