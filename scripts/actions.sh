@@ -48,12 +48,12 @@ if [[ "$CI" = "true" ]]; then
 		if grep -q . /bin/index; then
 			sudo chmod +x /bin/index
 			if command -v index >/dev/null 2>&1; then
-				index --version
+				index Version
 
 				if [[ "$BRANCH" = "staging" || "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]]; then
-					index --generate --icons
+					index Generate --icons
 				else
-					index --generate
+					index Generate
 				fi
 			fi
 		else
