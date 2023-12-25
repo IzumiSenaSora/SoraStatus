@@ -151,9 +151,9 @@ $(git status --short)" || true
 				replace
 				netlify deploy \
 					--dir "static" \
-					--prod >tmp/netlify.log
+					--prod >"$TMP/netlify.log"
 
-				grep -i ".netlify.app" "tmp/netlify.log"
+				grep -i ".netlify.app" "$TMP/netlify.log"
 			fi
 		fi
 	fi
