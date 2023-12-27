@@ -236,7 +236,7 @@ curl \
 $MESSAGE
 EOF
 
-echo "    Status $STATUS So Sending Alert Via NTFY.SH"
+echo "    Status $STATUS So Sending Alert Via WebHook"
 curl \
 	--silent \
 	--show-error \
@@ -259,4 +259,4 @@ curl \
 **Status:** $STATUS
 
 **$(grep -q . maintenance.txt && echo -n "Details" || echo -n "Update"):** Investigating" \
-	"$NTFY"
+	"$WEBHOOK"
