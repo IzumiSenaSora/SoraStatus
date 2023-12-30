@@ -1,11 +1,10 @@
 /*
-  Access-Control-Allow-Origin: *
   Author: Izumi Sena Sora (UnOrdinary)
   Cache-Control: public, no-cache
   Content-Security-Policy: base-uri 'none'; block-all-mixed-content; default-src 'none'; child-src 'self'; connect-src 'self'; font-src 'self' https://sorafonts.eu.org; form-action https://form.lotns.eu.org; frame-ancestors 'none'; img-src 'self' data: https: https://soraapis.eu.org; manifest-src 'self'; media-src 'self' data: https://soraapis.eu.org; report-uri https://report.lotns.eu.org/?to=csp; report-to default; script-src 'self' 'unsafe-inline' https://soraapis.eu.org; style-src 'self' 'unsafe-inline' https://soraapis.eu.org https://sorafonts.eu.org; upgrade-insecure-requests; webrtc 'block'
   Cross-Origin-Embedder-Policy: require-corp
   Cross-Origin-Opener-Policy: same-origin
-  Cross-Origin-Resource-Policy: cross-origin
+  Cross-Origin-Resource-Policy: same-origin
   Link: <https://soraapis.eu.org>; rel=preconnect; crossorigin, <https://sorafonts.eu.org>; rel=preconnect; crossorigin, <https://soracdns.eu.org>; rel=preconnect; crossorigin
   Origin-Agent-Cluster: ?1
   Permissions-Policy: accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), bluetooth=(), camera=(), clipboard-read=(), clipboard-write=(), display-capture=(), document-domain=(), encrypted-media=(), fullscreen=(), gamepad=(), geolocation=(), gyroscope=(), hid=(), idle-detection=(), interest-cohort=(), keyboard-map=(), local-fonts=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), speaker-selection=(), sync-xhr=(), usb=(), xr-spatial-tracking=()
@@ -21,50 +20,74 @@
   X-Robots-Tag: none
   X-XSS-Protection: 0
 
-/*.js
-  Cache-Control: public, max-age=31536000, immutable
-
-/*.mjs
-  Cache-Control: public, max-age=31536000, immutable
-
-/*.map
-  Cache-Control: public, max-age=31536000, immutable
+/*.atom
+  Cache-Control: public, max-age=1800
 
 /*.css
+  Access-Control-Allow-Origin: *
   Cache-Control: public, max-age=31536000, immutable
-
-/*.svg
-  Cache-Control: public, max-age=31536000, immutable
-
-/*.woff2
-  Cache-Control: public, max-age=31536000, immutable
+  Cross-Origin-Resource-Policy: cross-origin
 
 /*.gif
+  Access-Control-Allow-Origin: *
   Cache-Control: public, max-age=31536000
-
-/*.png
-  Cache-Control: public, max-age=31536000
-
-/*.jpg
-  Cache-Control: public, max-age=31536000
-
-/*.jpeg
-  Cache-Control: public, max-age=31536000
+  Cross-Origin-Resource-Policy: cross-origin
 
 /*.ico
+  Access-Control-Allow-Origin: *
   Cache-Control: public, max-age=31536000
+  Cross-Origin-Resource-Policy: cross-origin
 
-/*.webp
+/*.jpeg
+  Access-Control-Allow-Origin: *
   Cache-Control: public, max-age=31536000
+  Cross-Origin-Resource-Policy: cross-origin
+
+/*.jpg
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=31536000
+  Cross-Origin-Resource-Policy: cross-origin
+
+/*.js
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=31536000, immutable
+  Cross-Origin-Resource-Policy: cross-origin
 
 /*.json
   Cache-Control: public, max-age=1800
 
+/*.map
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=31536000, immutable
+  Cross-Origin-Resource-Policy: cross-origin
+
+/*.mjs
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=31536000, immutable
+  Cross-Origin-Resource-Policy: cross-origin
+
+/*.png
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=31536000
+  Cross-Origin-Resource-Policy: cross-origin
+
+/*.svg
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=31536000, immutable
+  Cross-Origin-Resource-Policy: cross-origin
+
 /*.txt
   Cache-Control: public, max-age=1800
 
-/*.xml
-  Cache-Control: public, max-age=1800
+/*.webp
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=31536000
+  Cross-Origin-Resource-Policy: cross-origin
 
-/*.atom
+/*.woff2
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=31536000, immutable
+  Cross-Origin-Resource-Policy: cross-origin
+
+/*.xml
   Cache-Control: public, max-age=1800
