@@ -41,7 +41,7 @@ if [[ "$CI" = "true" ]]; then
 	if [[ -d app ]]; then
 
 		if [[ -f static/bin/index-latest ]]; then
-			cp static/bin/index-latest /bin/index
+			sudo cp static/bin/index-latest /bin/index
 		else
 			if [[ "$GITHUB_WORKFLOW" = "Main" && "$BRANCH" = "main" ]]; then
 				sudo wget --quiet --output-document /bin/index "https://staging.soracdns.eu.org/bin/index/v0.1.3-Alpha"
