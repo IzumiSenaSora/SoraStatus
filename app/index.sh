@@ -256,6 +256,8 @@ $(cat "$TMP"/gen_index.xml)
 </channel>
 </rss>
 EOF
+
+	rm "$TMP"/gen_index.xml
 fi
 
 index Html --end
