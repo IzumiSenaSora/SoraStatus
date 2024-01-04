@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Description: Server Status of Light Of The Night Sky's Services.
+# Js: true
 
 index Html --start
 
