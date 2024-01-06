@@ -34,16 +34,18 @@
 		<!-- BOOTSTRAP-ICONS.CSS From SoraFonts -->
 		<link crossorigin="anonymous" href="https://sorafonts.eu.org/css/bootstrap-icons.css" integrity="sha512-wzf2wUOHxbiWRVsyX4ZJaiqQj67iLmvpNM7VFCuI5RP3epZKt9EwMR49qiX09O/8NV2NeM4w1+bQv+ONO+6DRg==" rel="stylesheet" />
 		<!-- INDEX.JS From SoraAPIs -->
-		<script crossorigin="anonymous" integrity="sha512-rwRQ65IYYjy2HhFbCUNuslBe3xrtSHPpAww/6jNUNnFxhUXZreqmqV77rhz8iNSjAUEdYCFBw534ncXRn4rycg==" src="https://soraapis.eu.org/js/index.js"></script>
+		<script crossorigin="anonymous" integrity="sha512-f/zhtcdwoULhzH1PbdwzmGR46ZSFJK71vEcvz5TNVlMUD6cXNKCOE0jdGPMrT/IS8SYvaMvUgYgUiT4sB9DKrQ==" src="https://soraapis.eu.org/js/index.js"></script>
 	</head>
 	<!-- Head End -->
 	<!-- Body Start -->
 	<body class="container-fluid py-3">
-		<div class="splash-screen">
+		<!-- Awaiter Start -->
+		<div class="index-awaiter">
 			<div class="align-items-center bg-body d-flex fixed-top h-100 justify-content-center w-100">
 				<img height="200" src="/favicon.svg" width="200" />
 			</div>
 		</div>
+		<!-- Awaiter End -->
 		<!-- Header Start -->
 		<header class="align-items-center border-bottom d-flex mb-5 pb-3">
 			<a href="/" class="align-items-center d-flex link-body-emphasis text-decoration-none">
@@ -62,7 +64,7 @@
 					<div class="col-lg-6 mx-auto">
 						<p class="lead mb-4">The requested page could not be found but may be available again in the future</p>
 						<div class="d-grid d-sm-flex gap-2 justify-content-sm-center">
-							<a href="#" onclick="history.go(-1)"><button type="button" class="btn btn-primary btn-lg">Go Back</button></a>
+							<a class="index-back" href="#"><button type="button" class="btn btn-primary btn-lg">Go Back</button></a>
 						</div>
 					</div>
 				</div>
@@ -96,9 +98,7 @@
 		<!-- Footer Start -->
 		<footer class="border-top my-5 pt-5 text-body-secondary text-center">
 			Copyright &copy;
-			<script>
-				document.write(new Date().getFullYear());
-			</script>
+			<span class="index-year"></span>
 			SoraStatus
 		</footer>
 		<!-- Footer End -->
