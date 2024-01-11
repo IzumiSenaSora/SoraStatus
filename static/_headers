@@ -14,7 +14,6 @@
   Reporting-Endpoints: default="https://report.lotns.eu.org/?to=csp"
   Sec-GPC: 1
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
-  Timing-Allow-Origin: *
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
   X-Robots-Tag: none

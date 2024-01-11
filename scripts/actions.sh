@@ -15,10 +15,12 @@ if [[ "$CI" = "true" ]]; then
 	export TIME_DIFF
 
 	if ! command -v npm >/dev/null 2>&1; then
+
 		sudo apt-get install nodejs >/dev/null 2>&1
 	fi
 
 	if [[ "$GITHUB_WORKFLOW" = "Main" && "$BRANCH" = "main" ]]; then
+
 		sudo wget --quiet --output-document /bin/pretty "https://staging.soracdns.eu.org/bin/pretty"
 		sudo wget --quiet --output-document /bin/shpretty "https://staging.soracdns.eu.org/bin/shpretty"
 	else
@@ -27,23 +29,28 @@ if [[ "$CI" = "true" ]]; then
 	fi
 
 	if grep -q . /bin/pretty; then
+
 		sudo chmod +x /bin/pretty
 	fi
 
 	if grep -q . /bin/shpretty; then
+
 		sudo chmod +x /bin/shpretty
 	fi
 
 	if [[ -f scripts/run.sh ]]; then
+
 		bash scripts/run.sh
 	fi
 
 	if [[ -d app ]]; then
 
 		if [[ -f static/bin/index-latest ]]; then
+
 			sudo cp static/bin/index-latest /bin/index
 		else
 			if [[ "$GITHUB_WORKFLOW" = "Main" && "$BRANCH" = "main" ]]; then
+
 				sudo wget --quiet --output-document /bin/index "https://staging.soracdns.eu.org/bin/index/v0.1.3-Alpha"
 			else
 				sudo wget --quiet --output-document /bin/index "https://staging.soracdns.eu.org/bin/index-latest"
@@ -53,9 +60,11 @@ if [[ "$CI" = "true" ]]; then
 		sudo chmod +x /bin/index
 
 		if command -v index >/dev/null 2>&1; then
+
 			index --version
 
 			if [[ "$BRANCH" = "staging" || "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]]; then
+
 				index Generate --icons
 			else
 				index Generate
@@ -63,16 +72,25 @@ if [[ "$CI" = "true" ]]; then
 		fi
 	else
 		if command -v pretty >/dev/null 2>&1; then
+
 			pretty
 		fi
 
 		if command -v shpretty >/dev/null 2>&1; then
+
 			shpretty
 		fi
 	fi
 
 	if [[ "$GITHUB_WORKFLOW" = "Main" || "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]]; then
-		if [[ -n $(git status --short) ]]; then
+
+		if [[ -n "$(git status --short)" ]]; then
+
+			if ! [[ "$GITHUB_WORKFLOW" = "Main" ]]; then
+
+				git checkout -b development
+			fi
+
 			git add --all
 
 			git commit \
@@ -85,8 +103,6 @@ Changes:
 $(git status --short)" || true
 
 			git push --all origin
-		else
-			git status --short
 		fi
 	else
 		git status --short
@@ -97,6 +113,7 @@ $(git status --short)" || true
 		if [[ -d static ]]; then
 
 			if [[ "$GITHUB_WORKFLOW" = "Staging" ]]; then
+
 				git reset --hard
 			fi
 
@@ -126,6 +143,7 @@ $(git status --short)" || true
 			if [[ "$GITHUB_WORKFLOW" = "Main" && "$BRANCH" = "main" ]]; then
 
 				if ! command -v vercel >/dev/null 2>&1; then
+
 					npm install --global vercel@latest >/dev/null 2>&1
 				fi
 
@@ -149,6 +167,7 @@ $(git status --short)" || true
 				rm -r -f "$GITHUB_WORKSPACE"/static/.vercel/
 			else
 				if ! command -v netlify >/dev/null 2>&1; then
+
 					npm install --global netlify-cli >/dev/null 2>&1
 				fi
 
