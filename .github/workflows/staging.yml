@@ -2,12 +2,8 @@ name: Staging
 
 on:
     pull_request:
-        branches:
-            - staging
 
     push:
-        branches:
-            - staging
 
     workflow_dispatch:
 
@@ -36,8 +32,6 @@ jobs:
                   git config --global filter.crypt.required true
 
             - uses: actions/checkout@v4
-              with:
-                  ref: "staging"
 
             - name: Run Actions
               run: |

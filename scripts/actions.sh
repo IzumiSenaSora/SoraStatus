@@ -165,7 +165,9 @@ $(git status --short)" || true
 					--token "$VERCEL_TOKEN"
 
 				rm -r -f "$GITHUB_WORKSPACE"/static/.vercel/
-			else
+
+			elif [[ "$GITHUB_WORKFLOW" = "Staging" && "$BRANCH" = "staging" ]]; then
+
 				if ! command -v netlify >/dev/null 2>&1; then
 
 					npm install --global netlify-cli >/dev/null 2>&1
