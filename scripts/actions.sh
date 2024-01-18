@@ -21,11 +21,45 @@ if [[ "$CI" = "true" ]]; then
 
 	if [[ "$GITHUB_WORKFLOW" = "Main" && "$BRANCH" = "main" ]]; then
 
-		sudo wget --https-only --output-document /bin/pretty --quiet --secure-protocol "TLSv1_3" "https://staging.soracdns.eu.org/bin/pretty"
-		sudo wget --https-only --output-document /bin/shpretty --quiet --secure-protocol "TLSv1_3" "https://staging.soracdns.eu.org/bin/shpretty"
+		sudo curl \
+			--doh-url "https://one.soradns.eu.org" \
+			--http2-prior-knowledge \
+			--output "/bin/pretty" \
+			--show-error \
+			--silent \
+			--ssl-reqd \
+			--tlsv1.3 \
+			--url "https://staging.soracdns.eu.org/bin/pretty"
+
+		sudo curl \
+			--doh-url "https://one.soradns.eu.org" \
+			--http2-prior-knowledge \
+			--output "/bin/shpretty" \
+			--show-error \
+			--silent \
+			--ssl-reqd \
+			--tlsv1.3 \
+			--url "https://staging.soracdns.eu.org/bin/shpretty"
 	else
-		sudo wget --https-only --output-document /bin/pretty --quiet --secure-protocol "TLSv1_3" "https://staging.soracdns.eu.org/bin/pretty"
-		sudo wget --https-only --output-document /bin/shpretty --quiet --secure-protocol "TLSv1_3" "https://staging.soracdns.eu.org/bin/shpretty"
+		sudo curl \
+			--doh-url "https://one.soradns.eu.org" \
+			--http2-prior-knowledge \
+			--output "/bin/pretty" \
+			--show-error \
+			--silent \
+			--ssl-reqd \
+			--tlsv1.3 \
+			--url "https://staging.soracdns.eu.org/bin/pretty"
+
+		sudo curl \
+			--doh-url "https://one.soradns.eu.org" \
+			--http2-prior-knowledge \
+			--output "/bin/shpretty" \
+			--show-error \
+			--silent \
+			--ssl-reqd \
+			--tlsv1.3 \
+			--url "https://staging.soracdns.eu.org/bin/shpretty"
 	fi
 
 	if grep -q . /bin/pretty; then
@@ -49,7 +83,16 @@ if [[ "$CI" = "true" ]]; then
 
 			sudo cp static/bin/index-latest /bin/index
 		else
-			sudo wget --https-only --output-document /bin/index --quiet --secure-protocol "TLSv1_3" "https://staging.soracdns.eu.org/bin/index-latest"
+			sudo curl \
+				--doh-url "https://one.soradns.eu.org" \
+				--http2-prior-knowledge \
+				--output "/bin/index" \
+				--show-error \
+				--silent \
+				--ssl-reqd \
+				--tlsv1.3 \
+				--url "https://staging.soracdns.eu.org/bin/index-latest"
+
 		fi
 
 		sudo chmod +x /bin/index
@@ -114,7 +157,7 @@ $(git status --short)" || true
 
 			replace() {
 
-				find . -type f '(' -name "*.html" -o -name "*.css" -o -name "*.js" -o -name "*.json" -o -name "*.xml" -o -name "*.txt" -o -name "_headers" -o -name "vercel.json" ')' | while read -r FILE; do
+				find . -type f '(' -name "*.html" -o -name "*.css" -o -name "*.js" -o -name "*.json" -o -name "*.xml" -o -name "*.txt" -o -name "_headers" -o -name "vercel.json" ')' | sort | while read -r FILE; do
 
 					sed -i "s%https://aeonquake.eu.org%https://staging.aeonquake.eu.org%g" "$FILE"
 					sed -i "s%https://lotns.eu.org%https://staging.lotns.eu.org%g" "$FILE"
@@ -159,7 +202,7 @@ $(git status --short)" || true
 					--prod \
 					--token "$VERCEL_TOKEN"
 
-				rm -r -f "$GITHUB_WORKSPACE"/static/.vercel/
+				rm --force --recursive "$GITHUB_WORKSPACE"/static/.vercel/
 
 			elif [[ "$GITHUB_WORKFLOW" = "Staging" && "$BRANCH" = "staging" ]]; then
 
@@ -169,6 +212,7 @@ $(git status --short)" || true
 				fi
 
 				replace
+
 				netlify deploy \
 					--dir "static" \
 					--prod >"$TMP/netlify.log"
