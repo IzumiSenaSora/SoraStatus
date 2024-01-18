@@ -1,3 +1,18 @@
+UnOrdinary|unordinary.eu.org|Service Disruption|Wed, 17 Jan 2024 21:57:04|Wed, 17 Jan 2024 23:04:00|Elevated reports of 500 error rates on edge requests
+SoraStatus|sorastatus.eu.org|Service Disruption|Wed, 17 Jan 2024 21:56:57|Wed, 17 Jan 2024 23:04:00|Elevated reports of 500 error rates on edge requests
+SoraLicense|soralicense.eu.org|Service Disruption|Wed, 17 Jan 2024 21:56:52|Wed, 17 Jan 2024 23:04:00|Elevated reports of 500 error rates on edge requests
+SoraID|soraid.eu.org|Service Disruption|Wed, 17 Jan 2024 21:56:39|Wed, 17 Jan 2024 23:04:00|Elevated reports of 500 error rates on edge requests
+SoraFonts|sorafonts.eu.org|Service Disruption|Wed, 17 Jan 2024 21:56:34|Wed, 17 Jan 2024 23:04:00|Elevated reports of 500 error rates on edge requests
+SoraDNS|soradns.eu.org|Service Disruption|Wed, 17 Jan 2024 21:56:32|Wed, 17 Jan 2024 23:04:00|Elevated reports of 500 error rates on edge requests
+About.SoraCloud|about.soracloud.eu.org|Service Disruption|Wed, 17 Jan 2024 21:56:29|Wed, 17 Jan 2024 23:04:00|Elevated reports of 500 error rates on edge requests
+SoraBlog|sorablog.eu.org|Service Disruption|Wed, 17 Jan 2024 21:56:25|Wed, 17 Jan 2024 23:04:00|Elevated reports of 500 error rates on edge requests
+SoraAPIs|soraapis.eu.org|Service Disruption|Wed, 17 Jan 2024 21:56:21|Wed, 17 Jan 2024 23:04:00|Elevated reports of 500 error rates on edge requests
+SoraLicense|soralicense.eu.org|Service Disruption|Wed, 17 Jan 2024 21:48:08|Wed, 17 Jan 2024 23:04:00|Elevated reports of 500 error rates on edge requests
+SoraID|soraid.eu.org|Service Disruption|Wed, 17 Jan 2024 21:48:03|Wed, 17 Jan 2024 23:04:00|Elevated reports of 500 error rates on edge requests
+SoraFonts|sorafonts.eu.org|Service Disruption|Wed, 17 Jan 2024 21:48:01|Wed, 17 Jan 2024 23:04:00|Elevated reports of 500 error rates on edge requests
+SoraBlog|sorablog.eu.org|Service Disruption|Wed, 17 Jan 2024 21:47:46|Wed, 17 Jan 2024 23:04:00|Elevated reports of 500 error rates on edge requests
+SoraAPIs|soraapis.eu.org|Service Disruption|Wed, 17 Jan 2024 21:47:34|Wed, 17 Jan 2024 23:04:00|Elevated reports of 500 error rates on edge requests
+UnOrdinary|unordinary.eu.org|Service Disruption|Wed, 17 Jan 2024 14:59:49|Wed, 17 Jan 2024 15:30:00|Elevated reports of latency and error rates
 SoraStatus|sorastatus.eu.org|Service Disruption|Wed, 20 Sep 2023 01:04:39|Wed, 20 Sep 2023 07:00:00|Netlify deploy script error now (fixed)
 SoraID|soraid.eu.org|Service Disruption|Tue, 12 Sep 2023 23:07:08|Tue, 12 Sep 2023 23:40:00|Some edge functions logs missing
 SoraID|soraid.eu.org|Service Disruption|Tue, 12 Sep 2023 22:37:05|Tue, 12 Sep 2023 23:00:00|Some edge functions logs missing

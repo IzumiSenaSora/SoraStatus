@@ -15,6 +15,141 @@
 		<link>https://sorastatus.eu.org</link>
 	</image>
 
+	<!-- UnOrdinary (unordinary.eu.org) -->
+	<item>
+		<title>[Resolved] UnOrdinary (Service Disruption)</title>
+		<link>https://sorastatus.eu.org</link>
+		<pubDate>Wed, 17 Jan 2024 21:57:04</pubDate>
+		<description><p>Elevated reports of 500 error rates on edge requests</p></description>
+		<guid>https://sorastatus.eu.org/#a7860c6a095fa5bc21fb0232c6da491d20ab644360a1f278436185968fc2d25f</guid>
+		<category>Wed, 17 Jan 2024 23:04:00</category>
+	</item>
+	<!-- SoraStatus (sorastatus.eu.org) -->
+	<item>
+		<title>[Resolved] SoraStatus (Service Disruption)</title>
+		<link>https://sorastatus.eu.org</link>
+		<pubDate>Wed, 17 Jan 2024 21:56:57</pubDate>
+		<description><p>Elevated reports of 500 error rates on edge requests</p></description>
+		<guid>https://sorastatus.eu.org/#e3998721e1685d1741a01dd608549cdfa98c8ccac5e473936afbe50e9d7f1546</guid>
+		<category>Wed, 17 Jan 2024 23:04:00</category>
+	</item>
+	<!-- SoraLicense (soralicense.eu.org) -->
+	<item>
+		<title>[Resolved] SoraLicense (Service Disruption)</title>
+		<link>https://sorastatus.eu.org</link>
+		<pubDate>Wed, 17 Jan 2024 21:56:52</pubDate>
+		<description><p>Elevated reports of 500 error rates on edge requests</p></description>
+		<guid>https://sorastatus.eu.org/#df2105566b943694f554d964e2ad06cf28e124067d07a3e9615809a7b7cd75e8</guid>
+		<category>Wed, 17 Jan 2024 23:04:00</category>
+	</item>
+	<!-- SoraID (soraid.eu.org) -->
+	<item>
+		<title>[Resolved] SoraID (Service Disruption)</title>
+		<link>https://sorastatus.eu.org</link>
+		<pubDate>Wed, 17 Jan 2024 21:56:39</pubDate>
+		<description><p>Elevated reports of 500 error rates on edge requests</p></description>
+		<guid>https://sorastatus.eu.org/#6e9e372821958e0b20676764324094bb7055aed6f81a27b51b9cf039eaca2538</guid>
+		<category>Wed, 17 Jan 2024 23:04:00</category>
+	</item>
+	<!-- SoraFonts (sorafonts.eu.org) -->
+	<item>
+		<title>[Resolved] SoraFonts (Service Disruption)</title>
+		<link>https://sorastatus.eu.org</link>
+		<pubDate>Wed, 17 Jan 2024 21:56:34</pubDate>
+		<description><p>Elevated reports of 500 error rates on edge requests</p></description>
+		<guid>https://sorastatus.eu.org/#a45bd28e70c9a4f89b8fac737677b0be861fecca26341df925d9fb444c6c8d32</guid>
+		<category>Wed, 17 Jan 2024 23:04:00</category>
+	</item>
+	<!-- SoraDNS (soradns.eu.org) -->
+	<item>
+		<title>[Resolved] SoraDNS (Service Disruption)</title>
+		<link>https://sorastatus.eu.org</link>
+		<pubDate>Wed, 17 Jan 2024 21:56:32</pubDate>
+		<description><p>Elevated reports of 500 error rates on edge requests</p></description>
+		<guid>https://sorastatus.eu.org/#b0862e2b5fab4ac1e3fa073c26e85a37d16ddf9f8c7450c62389af8d671c9778</guid>
+		<category>Wed, 17 Jan 2024 23:04:00</category>
+	</item>
+	<!-- About.SoraCloud (about.soracloud.eu.org) -->
+	<item>
+		<title>[Resolved] About.SoraCloud (Service Disruption)</title>
+		<link>https://sorastatus.eu.org</link>
+		<pubDate>Wed, 17 Jan 2024 21:56:29</pubDate>
+		<description><p>Elevated reports of 500 error rates on edge requests</p></description>
+		<guid>https://sorastatus.eu.org/#8d084f2ebb6ae45f5031f921244e1d5bacf47641d551710c866c61eaf11fcf86</guid>
+		<category>Wed, 17 Jan 2024 23:04:00</category>
+	</item>
+	<!-- SoraBlog (sorablog.eu.org) -->
+	<item>
+		<title>[Resolved] SoraBlog (Service Disruption)</title>
+		<link>https://sorastatus.eu.org</link>
+		<pubDate>Wed, 17 Jan 2024 21:56:25</pubDate>
+		<description><p>Elevated reports of 500 error rates on edge requests</p></description>
+		<guid>https://sorastatus.eu.org/#9d2f4610b34a9c1a7f546af37c8d417a8db94fbf89a00e41446057c42d1c2ccf</guid>
+		<category>Wed, 17 Jan 2024 23:04:00</category>
+	</item>
+	<!-- SoraAPIs (soraapis.eu.org) -->
+	<item>
+		<title>[Resolved] SoraAPIs (Service Disruption)</title>
+		<link>https://sorastatus.eu.org</link>
+		<pubDate>Wed, 17 Jan 2024 21:56:21</pubDate>
+		<description><p>Elevated reports of 500 error rates on edge requests</p></description>
+		<guid>https://sorastatus.eu.org/#b88492842f85a466299b071b51c02e1e4907b0da120451aeac36ad5a65aadf6d</guid>
+		<category>Wed, 17 Jan 2024 23:04:00</category>
+	</item>
+	<!-- SoraLicense (soralicense.eu.org) -->
+	<item>
+		<title>[Resolved] SoraLicense (Service Disruption)</title>
+		<link>https://sorastatus.eu.org</link>
+		<pubDate>Wed, 17 Jan 2024 21:48:08</pubDate>
+		<description><p>Elevated reports of 500 error rates on edge requests</p></description>
+		<guid>https://sorastatus.eu.org/#e1562cd2bcd4cd58358d73f66197114e98e7f7d8f28aaa89bd88c3734a7bde52</guid>
+		<category>Wed, 17 Jan 2024 23:04:00</category>
+	</item>
+	<!-- SoraID (soraid.eu.org) -->
+	<item>
+		<title>[Resolved] SoraID (Service Disruption)</title>
+		<link>https://sorastatus.eu.org</link>
+		<pubDate>Wed, 17 Jan 2024 21:48:03</pubDate>
+		<description><p>Elevated reports of 500 error rates on edge requests</p></description>
+		<guid>https://sorastatus.eu.org/#f273aab5ce18b0fb823c815352d12d01f57aead7a70d31853384d867d849ff75</guid>
+		<category>Wed, 17 Jan 2024 23:04:00</category>
+	</item>
+	<!-- SoraFonts (sorafonts.eu.org) -->
+	<item>
+		<title>[Resolved] SoraFonts (Service Disruption)</title>
+		<link>https://sorastatus.eu.org</link>
+		<pubDate>Wed, 17 Jan 2024 21:48:01</pubDate>
+		<description><p>Elevated reports of 500 error rates on edge requests</p></description>
+		<guid>https://sorastatus.eu.org/#bd60b4a0053b5ed92076545350c695b2e0850eca7adef86c70fb916a347f03b5</guid>
+		<category>Wed, 17 Jan 2024 23:04:00</category>
+	</item>
+	<!-- SoraBlog (sorablog.eu.org) -->
+	<item>
+		<title>[Resolved] SoraBlog (Service Disruption)</title>
+		<link>https://sorastatus.eu.org</link>
+		<pubDate>Wed, 17 Jan 2024 21:47:46</pubDate>
+		<description><p>Elevated reports of 500 error rates on edge requests</p></description>
+		<guid>https://sorastatus.eu.org/#b9cb30c7edfdddb63369f00206762302ff2107dfca4a2ba269e78c3d4e6f00d2</guid>
+		<category>Wed, 17 Jan 2024 23:04:00</category>
+	</item>
+	<!-- SoraAPIs (soraapis.eu.org) -->
+	<item>
+		<title>[Resolved] SoraAPIs (Service Disruption)</title>
+		<link>https://sorastatus.eu.org</link>
+		<pubDate>Wed, 17 Jan 2024 21:47:34</pubDate>
+		<description><p>Elevated reports of 500 error rates on edge requests</p></description>
+		<guid>https://sorastatus.eu.org/#b11fe646006d619a0fb839b5c845f2db347227df976316d6995bfecd449630d5</guid>
+		<category>Wed, 17 Jan 2024 23:04:00</category>
+	</item>
+	<!-- UnOrdinary (unordinary.eu.org) -->
+	<item>
+		<title>[Resolved] UnOrdinary (Service Disruption)</title>
+		<link>https://sorastatus.eu.org</link>
+		<pubDate>Wed, 17 Jan 2024 14:59:49</pubDate>
+		<description><p>Elevated reports of latency and error rates</p></description>
+		<guid>https://sorastatus.eu.org/#18bbe6735287a17371527d990f0bbfc33ad98e7a95421ae8d039a945248399e1</guid>
+		<category>Wed, 17 Jan 2024 15:30:00</category>
+	</item>
 	<!-- SoraStatus (sorastatus.eu.org) -->
 	<item>
 		<title>[Resolved] SoraStatus (Service Disruption)</title>
