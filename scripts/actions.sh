@@ -21,11 +21,11 @@ if [[ "$CI" = "true" ]]; then
 
 	if [[ "$GITHUB_WORKFLOW" = "Main" && "$BRANCH" = "main" ]]; then
 
-		sudo wget --quiet --output-document /bin/pretty "https://staging.soracdns.eu.org/bin/pretty"
-		sudo wget --quiet --output-document /bin/shpretty "https://staging.soracdns.eu.org/bin/shpretty"
+		sudo wget --https-only --output-document /bin/pretty --quiet --secure-protocol "TLSv1_3" "https://staging.soracdns.eu.org/bin/pretty"
+		sudo wget --https-only --output-document /bin/shpretty --quiet --secure-protocol "TLSv1_3" "https://staging.soracdns.eu.org/bin/shpretty"
 	else
-		sudo wget --quiet --output-document /bin/pretty "https://staging.soracdns.eu.org/bin/pretty"
-		sudo wget --quiet --output-document /bin/shpretty "https://staging.soracdns.eu.org/bin/shpretty"
+		sudo wget --https-only --output-document /bin/pretty --quiet --secure-protocol "TLSv1_3" "https://staging.soracdns.eu.org/bin/pretty"
+		sudo wget --https-only --output-document /bin/shpretty --quiet --secure-protocol "TLSv1_3" "https://staging.soracdns.eu.org/bin/shpretty"
 	fi
 
 	if grep -q . /bin/pretty; then
@@ -49,12 +49,7 @@ if [[ "$CI" = "true" ]]; then
 
 			sudo cp static/bin/index-latest /bin/index
 		else
-			if [[ "$GITHUB_WORKFLOW" = "Main" && "$BRANCH" = "main" ]]; then
-
-				sudo wget --quiet --output-document /bin/index "https://staging.soracdns.eu.org/bin/index/v0.1.3-Alpha"
-			else
-				sudo wget --quiet --output-document /bin/index "https://staging.soracdns.eu.org/bin/index-latest"
-			fi
+			sudo wget --https-only --output-document /bin/index --quiet --secure-protocol "TLSv1_3" "https://staging.soracdns.eu.org/bin/index-latest"
 		fi
 
 		sudo chmod +x /bin/index

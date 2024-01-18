@@ -38,6 +38,7 @@ jobs:
                   echo
 
                   if [[ -f scripts/actions.sh ]]; then
+
                       bash scripts/actions.sh
                   fi
 
