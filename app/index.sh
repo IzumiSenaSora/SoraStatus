@@ -258,6 +258,7 @@ $(cat "$TMP"/gen_index.xml)
 </rss>
 EOF
 
+	rm "$TMP"/date.txt
 	rm "$TMP"/gen_index.xml
 fi
 
