@@ -8,18 +8,6 @@
 			"sizes": "512x512",
 			"src": "/mask-icon.svg",
 			"type": "image/svg+xml"
-		},
-		{
-			"purpose": "maskable",
-			"sizes": "192x192",
-			"src": "/res/icon-192.png",
-			"type": "image/png"
-		},
-		{
-			"purpose": "maskable",
-			"sizes": "512x512",
-			"src": "/res/icon-512.png",
-			"type": "image/png"
 		}
 	],
 	"name": "SoraStatus",
