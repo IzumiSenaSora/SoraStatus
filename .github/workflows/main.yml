@@ -33,7 +33,6 @@ jobs:
             - uses: actions/checkout@v4
               with:
                   ref: "main"
-                  token: ${{ secrets.PERSONAL_TOKEN }}
 
             - name: Run Actions
               run: |
