@@ -1,7 +1,7 @@
 /*
   Author: Izumi Sena Sora (UnOrdinary)
   Cache-Control: public, no-cache
-  Content-Security-Policy: base-uri 'none'; block-all-mixed-content; default-src 'none'; child-src 'self'; connect-src 'self'; font-src 'self' https://sorafonts.eu.org; form-action https://form.lotns.eu.org; frame-ancestors 'none'; img-src 'self' data: https: https://soraapis.eu.org; manifest-src 'self'; media-src 'self' data: https://soraapis.eu.org; report-uri https://report.lotns.eu.org/?to=csp; report-to default; script-src 'self' 'unsafe-inline' https://soraapis.eu.org; style-src 'self' 'unsafe-inline' https://soraapis.eu.org https://sorafonts.eu.org; upgrade-insecure-requests; webrtc 'block'
+  Content-Security-Policy: base-uri 'none'; default-src 'none'; child-src 'self'; connect-src 'self'; font-src 'self' https://sorafonts.eu.org; form-action https://form.lotns.eu.org; frame-ancestors 'none'; img-src 'self' data: https: https://soraapis.eu.org; manifest-src 'self'; media-src 'self' data: https://soraapis.eu.org; report-uri https://report.lotns.eu.org/?to=csp; report-to default; script-src 'self' 'unsafe-inline' https://soraapis.eu.org; style-src 'self' 'unsafe-inline' https://soraapis.eu.org https://sorafonts.eu.org; upgrade-insecure-requests; webrtc 'block'
   Cross-Origin-Embedder-Policy: require-corp
   Cross-Origin-Opener-Policy: same-origin
   Cross-Origin-Resource-Policy: same-origin

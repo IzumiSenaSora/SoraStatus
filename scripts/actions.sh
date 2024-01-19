@@ -1,5 +1,29 @@
 #!/bin/bash
 
+Download() {
+	if [[ "$1" = "" && "$2" = "" ]]; then
+
+		echo "Exiting...!"
+
+		exit 1
+	else
+
+		if command -v curl >/dev/null 2>&1; then
+
+			sudo curl \
+				--doh-url "https://one.soradns.eu.org" \
+				--http2-prior-knowledge \
+				--location \
+				--output "$1" \
+				--show-error \
+				--silent \
+				--ssl-reqd \
+				--tlsv1.3 \
+				--url "$2"
+		fi
+	fi
+}
+
 if [[ "$CI" = "true" ]]; then
 
 	CURRENT="$(git log -1 --format=%ct)"
@@ -19,87 +43,26 @@ if [[ "$CI" = "true" ]]; then
 		sudo apt-get install nodejs >/dev/null 2>&1
 	fi
 
-	if [[ "$GITHUB_WORKFLOW" = "Main" && "$BRANCH" = "main" ]]; then
+	if [[ -s static/bin/index-latest ]]; then
 
-		sudo curl \
-			--doh-url "https://one.soradns.eu.org" \
-			--http2-prior-knowledge \
-			--output "/bin/pretty" \
-			--show-error \
-			--silent \
-			--ssl-reqd \
-			--tlsv1.3 \
-			--url "https://staging.soracdns.eu.org/bin/pretty"
-
-		sudo curl \
-			--doh-url "https://one.soradns.eu.org" \
-			--http2-prior-knowledge \
-			--output "/bin/shpretty" \
-			--show-error \
-			--silent \
-			--ssl-reqd \
-			--tlsv1.3 \
-			--url "https://staging.soracdns.eu.org/bin/shpretty"
+		sudo cp static/bin/index-latest /bin/index
 	else
-		sudo curl \
-			--doh-url "https://one.soradns.eu.org" \
-			--http2-prior-knowledge \
-			--output "/bin/pretty" \
-			--show-error \
-			--silent \
-			--ssl-reqd \
-			--tlsv1.3 \
-			--url "https://staging.soracdns.eu.org/bin/pretty"
+		Download "/bin/index" "https://staging.soracdns.eu.org/bin/index-latest"
 
-		sudo curl \
-			--doh-url "https://one.soradns.eu.org" \
-			--http2-prior-knowledge \
-			--output "/bin/shpretty" \
-			--show-error \
-			--silent \
-			--ssl-reqd \
-			--tlsv1.3 \
-			--url "https://staging.soracdns.eu.org/bin/shpretty"
 	fi
 
-	if grep -q . /bin/pretty; then
+	sudo chmod +x /bin/index
 
-		sudo chmod +x /bin/pretty
-	fi
-
-	if grep -q . /bin/shpretty; then
-
-		sudo chmod +x /bin/shpretty
-	fi
-
-	if [[ -f scripts/run.sh ]]; then
+	if [[ -s scripts/run.sh ]]; then
 
 		bash scripts/run.sh
 	fi
 
-	if [[ -d app ]]; then
+	if command -v index >/dev/null 2>&1; then
 
-		if [[ -f static/bin/index-latest ]]; then
+		index --version
 
-			sudo cp static/bin/index-latest /bin/index
-		else
-			sudo curl \
-				--doh-url "https://one.soradns.eu.org" \
-				--http2-prior-knowledge \
-				--output "/bin/index" \
-				--show-error \
-				--silent \
-				--ssl-reqd \
-				--tlsv1.3 \
-				--url "https://staging.soracdns.eu.org/bin/index-latest"
-
-		fi
-
-		sudo chmod +x /bin/index
-
-		if command -v index >/dev/null 2>&1; then
-
-			index --version
+		if [[ -d app ]]; then
 
 			if [[ "$BRANCH" = "staging" || "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]]; then
 
@@ -107,16 +70,10 @@ if [[ "$CI" = "true" ]]; then
 			else
 				index Generate
 			fi
-		fi
-	else
-		if command -v pretty >/dev/null 2>&1; then
+		else
+			index Pretty
 
-			pretty
-		fi
-
-		if command -v shpretty >/dev/null 2>&1; then
-
-			shpretty
+			index ShPretty
 		fi
 	fi
 
@@ -151,6 +108,8 @@ $(git status --short)" || true
 		if [[ -d static ]]; then
 
 			if [[ "$GITHUB_WORKFLOW" = "Staging" ]]; then
+
+				tree -a "$TMPDIR"
 
 				git reset --hard
 			fi
@@ -215,9 +174,9 @@ $(git status --short)" || true
 
 				netlify deploy \
 					--dir "static" \
-					--prod >"$TMP/netlify.log"
+					--prod >"$TMPDIR/netlify.log"
 
-				grep -i ".netlify.app" "$TMP/netlify.log"
+				grep -i ".netlify.app" "$TMPDIR/netlify.log"
 			fi
 		fi
 	fi

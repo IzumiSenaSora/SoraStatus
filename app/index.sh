@@ -161,11 +161,11 @@ gen_history() {
 		ID="$(echo -n "$STARTED" | sha256sum | cut -c 1-64)"
 		export ID
 
-		if [[ ! -r $TMP/date.txt ]]; then
+		if [[ ! -r $TMPDIR/date.txt ]]; then
 			if [[ "$RESOLVED" != "" ]]; then
-				echo "$RESOLVED" >"$TMP"/date.txt
+				echo "$RESOLVED" >"$TMPDIR"/date.txt
 			else
-				echo "$STARTED" >"$TMP"/date.txt
+				echo "$STARTED" >"$TMPDIR"/date.txt
 			fi
 		fi
 
@@ -204,7 +204,7 @@ $([[ "$STARTED" != "" ]] && echo "$STARTED")
 </div>
 EOF
 
-		cat <<EOF >>"$TMP"/gen_index.xml
+		cat <<EOF >>"$TMPDIR"/gen_index.xml
 	<!-- $BRAND ($HOSTS) -->
 	<item>
 		<title>$([[ "$RESOLVED" != "" ]] && echo "[Resolved] ")$BRAND ($STATE)</title>
@@ -233,7 +233,7 @@ $(gen_history)
 EOF
 fi
 
-if [[ -f $TMP/gen_index.xml ]]; then
+if [[ -f $TMPDIR/gen_index.xml ]]; then
 	cat <<EOF >static/index.xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
@@ -244,7 +244,7 @@ if [[ -f $TMP/gen_index.xml ]]; then
 	<ttl>1</ttl>
 	<generator>$NAME Server</generator>
 	<language>en-us</language>
-	<lastBuildDate>$([[ -r $TMP/date.txt ]] && date --utc "+%a, %d %b %Y %H:%M:%S" --file "$TMP"/date.txt)</lastBuildDate>
+	<lastBuildDate>$([[ -r $TMPDIR/date.txt ]] && date --utc "+%a, %d %b %Y %H:%M:%S" --file "$TMPDIR"/date.txt)</lastBuildDate>
 	<copyright>$(date --utc "+%Y") $NAME. All Rights Reserved.</copyright>
 	<image>
 		<url>https://$URL/opengraph.png</url>
@@ -252,14 +252,14 @@ if [[ -f $TMP/gen_index.xml ]]; then
 		<link>https://$URL</link>
 	</image>
 
-$(cat "$TMP"/gen_index.xml)
+$(cat "$TMPDIR"/gen_index.xml)
 
 </channel>
 </rss>
 EOF
 
-	rm "$TMP"/date.txt
-	rm "$TMP"/gen_index.xml
+	rm "$TMPDIR"/date.txt
+	rm "$TMPDIR"/gen_index.xml
 fi
 
 index Html --end

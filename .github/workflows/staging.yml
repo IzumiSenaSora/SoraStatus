@@ -12,7 +12,7 @@ jobs:
         runs-on: ubuntu-latest
         env:
             AGE: ${{ secrets.AGE }}
-            TMP: /tmp
+            TMPDIR: /tmp
             TZ: Asia/Dhaka
 
         steps:
