@@ -215,9 +215,9 @@ $(git status --short)" || true
 
 				netlify deploy \
 					--dir "static" \
-					--prod >"$TMP/netlify.log"
+					--prod >"$TMPDIR/netlify.log"
 
-				grep -i ".netlify.app" "$TMP/netlify.log"
+				grep -i ".netlify.app" "$TMPDIR/netlify.log"
 			fi
 		fi
 	fi

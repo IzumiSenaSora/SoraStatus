@@ -26,7 +26,7 @@ if [[ -f "list.txt" ]]; then
 	if nc -z -w 2 1.1.1.1 53 &>/dev/null; then
 		echo "Internet Connected"
 
-		rm -rf "$TMP"/*.{html,xml,txt} up.txt down.txt
+		rm -rf "$TMPDIR"/*.{html,xml,txt} up.txt down.txt
 
 		while IFS='|' read -r ONE TWO THREE; do
 
@@ -122,7 +122,7 @@ if [[ -f "list.txt" ]]; then
 					bash scripts/alert.sh
 
 					echo "$NAME|${URLS##*;}|$STATE|$DATETIME" >>down.txt
-					echo "$NAME|${URLS##*;}|$STATE|$DATETIME||" | cat - history.txt >"$TMP"/history-n.txt && mv "$TMP"/history-n.txt history.txt
+					echo "$NAME|${URLS##*;}|$STATE|$DATETIME||" | cat - history.txt >"$TMPDIR"/history-n.txt && mv "$TMPDIR"/history-n.txt history.txt
 				fi
 
 				echo "    State:           $STATE"
