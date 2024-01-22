@@ -24,6 +24,88 @@ Download() {
 	fi
 }
 
+Optimize() {
+
+	if ! command -v csso >/dev/null 2>&1; then
+
+		npm install --global csso-cli >/dev/null 2>&1
+	fi
+
+	if ! command -v html-minifier-terser >/dev/null 2>&1; then
+
+		npm install --global html-minifier-terser >/dev/null 2>&1
+	fi
+
+	if ! command -v terser >/dev/null 2>&1; then
+
+		npm install --global terser >/dev/null 2>&1
+	fi
+
+	find . -type f '(' -name "*.html" -o -name "*.css" -o -name "*.js" ')' | sort | while read -r FILE; do
+
+		if [[ "$FILE" = *".css" ]]; then
+
+			if command -v csso >/dev/null 2>&1; then
+
+				csso \
+					--input "$FILE" \
+					--output "$FILE.tmp" \
+					--stat
+
+				mv "$FILE.tmp" "$FILE"
+			fi
+		fi
+
+		if [[ "$FILE" = *".html" ]]; then
+
+			if command -v html-minifier-terser >/dev/null 2>&1; then
+
+				html-minifier-terser \
+					"$FILE" \
+					--output "$FILE.tmp" \
+					--collapse-inline-tag-whitespace \
+					--collapse-whitespace \
+					--minify-css \
+					--minify-js \
+					--remove-comments
+
+				mv "$FILE.tmp" "$FILE"
+			fi
+		fi
+
+		if [[ "$FILE" = *".js" ]]; then
+
+			if command -v terser >/dev/null 2>&1; then
+
+				terser \
+					"$FILE" \
+					--output "$FILE.tmp"
+
+				mv "$FILE.tmp" "$FILE"
+			fi
+		fi
+	done
+}
+
+Replace() {
+
+	find . -type f '(' -name "*.html" -o -name "*.css" -o -name "*.js" -o -name "*.json" -o -name "*.xml" -o -name "*.txt" -o -name "_headers" -o -name "vercel.json" ')' | sort | while read -r FILE; do
+
+		sed -i "s%https://aeonquake.eu.org%https://staging.aeonquake.eu.org%g" "$FILE"
+		sed -i "s%https://about.soracloud.eu.org%https://staging.about.soracloud.eu.org%g" "$FILE"
+		sed -i "s%https://lotns.eu.org%https://staging.lotns.eu.org%g" "$FILE"
+		sed -i "s%https://notryan.eu.org%https://staging.notryan.eu.org%g" "$FILE"
+		sed -i "s%https://soraapis.eu.org%https://staging.soraapis.eu.org%g" "$FILE"
+		sed -i "s%https://sorablog.eu.org%https://staging.sorablog.eu.org%g" "$FILE"
+		sed -i "s%https://soracdns.eu.org%https://staging.soracdns.eu.org%g" "$FILE"
+		sed -i "s%https://soradns.eu.org%https://staging.soradns.eu.org%g" "$FILE"
+		sed -i "s%https://sorafonts.eu.org%https://staging.sorafonts.eu.org%g" "$FILE"
+		sed -i "s%https://soralicense.eu.org%https://staging.soralicense.eu.org%g" "$FILE"
+		sed -i "s%https://sorastatus.eu.org%https://staging.sorastatus.eu.org%g" "$FILE"
+		sed -i "s%https://unordinary.eu.org%https://staging.unordinary.eu.org%g" "$FILE"
+	done
+}
+
 if [[ "$CI" = "true" ]]; then
 
 	CURRENT="$(git log -1 --format=%ct)"
@@ -114,25 +196,6 @@ $(git status --short)" || true
 				git reset --hard
 			fi
 
-			replace() {
-
-				find . -type f '(' -name "*.html" -o -name "*.css" -o -name "*.js" -o -name "*.json" -o -name "*.xml" -o -name "*.txt" -o -name "_headers" -o -name "vercel.json" ')' | sort | while read -r FILE; do
-
-					sed -i "s%https://aeonquake.eu.org%https://staging.aeonquake.eu.org%g" "$FILE"
-					sed -i "s%https://lotns.eu.org%https://staging.lotns.eu.org%g" "$FILE"
-					sed -i "s%https://notryan.eu.org%https://staging.notryan.eu.org%g" "$FILE"
-					sed -i "s%https://soraapis.eu.org%https://staging.soraapis.eu.org%g" "$FILE"
-					sed -i "s%https://soracdns.eu.org%https://staging.soracdns.eu.org%g" "$FILE"
-					sed -i "s%https://sorablog.eu.org%https://staging.sorablog.eu.org%g" "$FILE"
-					sed -i "s%https://about.soracloud.eu.org%https://staging.about.soracloud.eu.org%g" "$FILE"
-					sed -i "s%https://soradns.eu.org%https://staging.soradns.eu.org%g" "$FILE"
-					sed -i "s%https://sorafonts.eu.org%https://staging.sorafonts.eu.org%g" "$FILE"
-					sed -i "s%https://soralicense.eu.org%https://staging.soralicense.eu.org%g" "$FILE"
-					sed -i "s%https://sorastatus.eu.org%https://staging.sorastatus.eu.org%g" "$FILE"
-					sed -i "s%https://unordinary.eu.org%https://staging.unordinary.eu.org%g" "$FILE"
-				done
-			}
-
 			source .env
 
 			cd "$GITHUB_WORKSPACE" || exit
@@ -170,7 +233,9 @@ $(git status --short)" || true
 					npm install --global netlify-cli >/dev/null 2>&1
 				fi
 
-				replace
+				Optimize
+
+				Replace
 
 				netlify deploy \
 					--dir "static" \
