@@ -63,7 +63,6 @@ Optimize() {
 				html-minifier-terser \
 					"$FILE" \
 					--output "$FILE.tmp" \
-					--collapse-inline-tag-whitespace \
 					--collapse-whitespace \
 					--minify-css \
 					--minify-js \
