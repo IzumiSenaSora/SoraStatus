@@ -3,8 +3,6 @@
 # Description: Server Status of Light Of The Night Sky's Services.
 # Js: true
 
-index Html --start
-
 if grep -q . maintenance.txt; then
 	cat <<EOF
 
@@ -261,5 +259,3 @@ EOF
 	rm "$TMPDIR"/date.txt
 	rm "$TMPDIR"/gen_index.xml
 fi
-
-index Html --end
