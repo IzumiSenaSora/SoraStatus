@@ -38,7 +38,7 @@ jobs:
               run: |
                   echo
 
-                  if [[ -f scripts/actions.sh ]]; then
+                  if [[ -s scripts/actions.sh ]]; then
 
                       bash scripts/actions.sh
                   fi

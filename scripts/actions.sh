@@ -1,12 +1,7 @@
 #!/bin/bash
 
 Download() {
-	if [[ "$1" = "" && "$2" = "" ]]; then
-
-		echo "Exiting...!"
-
-		exit 1
-	else
+	if [[ -n "$1" && -n "$2" ]]; then
 
 		if command -v curl >/dev/null 2>&1; then
 
@@ -21,73 +16,14 @@ Download() {
 				--tlsv1.3 \
 				--url "$2"
 		fi
+	else
+		echo "Exiting...!"
+
+		exit 1
 	fi
-}
-
-Optimize() {
-
-	if ! command -v csso >/dev/null 2>&1; then
-
-		npm install --global csso-cli >/dev/null 2>&1
-	fi
-
-	if ! command -v html-minifier-terser >/dev/null 2>&1; then
-
-		npm install --global html-minifier-terser >/dev/null 2>&1
-	fi
-
-	if ! command -v terser >/dev/null 2>&1; then
-
-		npm install --global terser >/dev/null 2>&1
-	fi
-
-	find . -type f '(' -name "*.html" -o -name "*.css" -o -name "*.js" ')' | sort | while read -r FILE; do
-
-		if [[ "$FILE" = *".css" ]]; then
-
-			if command -v csso >/dev/null 2>&1; then
-
-				csso \
-					--input "$FILE" \
-					--output "$FILE.tmp" \
-					--stat
-
-				mv "$FILE.tmp" "$FILE"
-			fi
-		fi
-
-		if [[ "$FILE" = *".html" ]]; then
-
-			if command -v html-minifier-terser >/dev/null 2>&1; then
-
-				html-minifier-terser \
-					"$FILE" \
-					--output "$FILE.tmp" \
-					--collapse-whitespace \
-					--minify-css \
-					--minify-js \
-					--remove-comments
-
-				mv "$FILE.tmp" "$FILE"
-			fi
-		fi
-
-		if [[ "$FILE" = *".js" ]]; then
-
-			if command -v terser >/dev/null 2>&1; then
-
-				terser \
-					"$FILE" \
-					--output "$FILE.tmp"
-
-				mv "$FILE.tmp" "$FILE"
-			fi
-		fi
-	done
 }
 
 Replace() {
-
 	find . -type f '(' -name "*.html" -o -name "*.css" -o -name "*.js" -o -name "*.json" -o -name "*.xml" -o -name "*.txt" -o -name "_headers" -o -name "vercel.json" ')' | sort | while read -r FILE; do
 
 		sed -i "s%https://aeonquake.eu.org%https://staging.aeonquake.eu.org%g" "$FILE"
@@ -172,7 +108,7 @@ if [[ "$CI" = "true" ]]; then
 			git commit \
 				--all \
 				--signoff \
-				--message "[Automated CI/CD] Update $(basename -s .git "$(git remote get-url origin)" | tr '[:lower:]' '[:upper:]') $(TZ="Asia/Dhaka" date)
+				--message "[Automated CI/CD] Update $(date)
 
 Changes:
 
@@ -190,14 +126,15 @@ $(git status --short)" || true
 
 			if [[ "$GITHUB_WORKFLOW" = "Staging" ]]; then
 
-				tree -a "$TMPDIR"
+				tree -a "$TMPDIR/index"
 
 				git reset --hard
 			fi
 
-			source .env
+			if [[ -s .env ]]; then
 
-			cd "$GITHUB_WORKSPACE" || exit
+				source .env
+			fi
 
 			if [[ "$GITHUB_WORKFLOW" = "Main" && "$BRANCH" = "main" ]]; then
 
@@ -206,24 +143,29 @@ $(git status --short)" || true
 					npm install --global vercel@latest >/dev/null 2>&1
 				fi
 
-				vercel pull \
-					--cwd static \
-					--environment production \
-					--token "$VERCEL_TOKEN" \
-					--yes
+				if command -v vercel >/dev/null 2>&1; then
 
-				vercel build \
-					--cwd static \
-					--prod \
-					--token "$VERCEL_TOKEN"
+					vercel pull \
+						--cwd static \
+						--environment production \
+						--token "$VERCEL_TOKEN" \
+						--yes >"$TMPDIR/vercel.log"
 
-				vercel deploy \
-					--cwd static \
-					--prebuilt \
-					--prod \
-					--token "$VERCEL_TOKEN"
+					vercel build \
+						--cwd static \
+						--prod \
+						--token "$VERCEL_TOKEN" >>"$TMPDIR/vercel.log"
 
-				rm --force --recursive "$GITHUB_WORKSPACE"/static/.vercel/
+					vercel deploy \
+						--cwd static \
+						--prebuilt \
+						--prod \
+						--token "$VERCEL_TOKEN" >>"$TMPDIR/vercel.log"
+
+					grep -i ".vercel.app" "$TMPDIR/vercel.log"
+
+					rm --force --recursive static/.vercel
+				fi
 
 			elif [[ "$GITHUB_WORKFLOW" = "Staging" && "$BRANCH" = "staging" ]]; then
 
@@ -232,15 +174,18 @@ $(git status --short)" || true
 					npm install --global netlify-cli >/dev/null 2>&1
 				fi
 
-				Optimize
+				if command -v netlify >/dev/null 2>&1; then
 
-				Replace
+					index Optimize
 
-				netlify deploy \
-					--dir "static" \
-					--prod >"$TMPDIR/netlify.log"
+					Replace
 
-				grep -i ".netlify.app" "$TMPDIR/netlify.log"
+					netlify deploy \
+						--dir "static" \
+						--prod >"$TMPDIR/netlify.log"
+
+					grep -i ".netlify.app" "$TMPDIR/netlify.log"
+				fi
 			fi
 		fi
 	fi
