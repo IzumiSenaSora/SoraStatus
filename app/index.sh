@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# Description: Server Status of Light Of The Night Sky's Services.
-# Js: true
+export JS="true"
 
 if grep -q . maintenance.txt; then
 	cat <<EOF
@@ -19,7 +18,7 @@ if [[ -f down.txt ]]; then
 		cat <<EOF
 
 <!-- Alert -->
-<div class="alert alert-warning d-flex align-items-center mb-5" role="alert">
+<div class="alert alert-warning align-items-center d-flex mb-5" role="alert">
 <i class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2"></i>
 Some Systems are Experiencing Problems
 </div>
@@ -29,7 +28,7 @@ EOF
 		cat <<EOF
 
 <!-- Alert -->
-<div class="alert alert-danger d-flex align-items-center mb-5" role="alert">
+<div class="alert alert-danger align-items-center d-flex mb-5" role="alert">
 <i class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2"></i>
 Major Outage
 </div>
@@ -39,7 +38,7 @@ else
 	cat <<EOF
 
 <!-- Alert -->
-<div class="alert alert-success d-flex align-items-center mb-5" role="alert">
+<div class="alert alert-success align-items-center d-flex mb-5" role="alert">
 <i class="bi bi-check-circle-fill flex-shrink-0 me-2"></i>
 All Systems are Operational
 </div>
@@ -50,18 +49,18 @@ gen_down() {
 	while IFS='|' read -r BRAND HOSTS STATE STARTED; do
 
 		cat <<EOF
-<div class="card mb-3 border-danger">
+<div class="border-danger card mb-3">
 <a data-bs-toggle="collapse" href="#${BRAND}" role="button" aria-expanded="false" aria-controls="${BRAND}" class="card-body link-underline link-underline-opacity-0">
-<div class="d-flex w-100 justify-content-between">
+<div class="d-flex justify-content-between w-100">
 <h5 class="card-title mb-1">$BRAND</h5>
 <i class="bi bi-x-circle-fill text-danger"></i>
 </div>
 <p class="card-text mb-1">$HOSTS</p>
 <small class="card-text text-body-secondary">
-<span class="badge bg-danger-subtle border border-danger text-danger-emphasis rounded-pill text-capitalize">
+<span class="badge bg-danger-subtle border border-danger rounded-pill text-capitalize text-danger-emphasis">
 $STATE
 </span>
-<span class="badge bg-danger-subtle border border-danger text-danger-emphasis rounded-pill text-capitalize">
+<span class="badge bg-danger-subtle border border-danger rounded-pill text-capitalize text-danger-emphasis">
 $([[ "$STARTED" != "" ]] && echo "$STARTED")
 </span>
 </small>
@@ -91,7 +90,7 @@ if [[ -f down.txt ]]; then
 	cat <<EOF
 
 <!-- Down -->
-<div class="my-3 mb-5">
+<div class="mb-5 my-3">
 
 $(gen_down)
 
@@ -103,19 +102,18 @@ gen_up() {
 	while IFS='|' read -r BRAND HOSTS STATE; do
 
 		cat <<EOF
-<div class="card mb-3 border-success">
+<div class="border-success card mb-3">
 <a data-bs-toggle="collapse" href="#${BRAND}" role="button" aria-expanded="false" aria-controls="${BRAND}" class="card-body link-underline link-underline-opacity-0">
-<div class="d-flex w-100 justify-content-between">
+<div class="d-flex justify-content-between w-100">
 <h5 class="card-title mb-1">$BRAND</h5>
 <i class="bi bi-check-circle-fill text-success"></i>
 </div>
 <p class="card-text mb-1">$HOSTS</p>
 <small class="card-text text-body-secondary">
-<span class="badge bg-success-subtle border border-success text-success-emphasis rounded-pill text-capitalize">
+<span class="badge bg-success-subtle border border-success rounded-pill text-capitalize text-success-emphasis">
 $STATE
 </span>
-<span class="badge bg-success-subtle border border-success text-success-emphasis rounded-pill text-capitalize">
-<script>document.write(new Date().toUTCString().replace('GMT', ''));</script>
+<span class="badge bg-success-subtle border border-success index-date rounded-pill text-capitalize text-success-emphasis">
 </span>
 </small>
 </a>
@@ -124,7 +122,7 @@ $STATE
 <div class="card-body">
 <h5 class="card-title text-body-secondary">$STATE</h5>
 <h6 class="card-text fw-normal">
-<strong>Started</strong> - <script>document.write(new Date().toUTCString().replace('GMT', ''));</script>
+<strong>Started</strong> - <span class="index-date"></span>
 </h6>
 <h6 class="card-text fw-normal">
 <strong>Issue</strong> - No Issue
@@ -141,7 +139,7 @@ if [[ -f up.txt ]]; then
 	cat <<EOF
 
 <!-- Up -->
-<div class="row g-4">
+<div class="g-4 row">
 <div class="col-md-6">
 <div class="my-3">
 
@@ -168,18 +166,18 @@ gen_history() {
 		fi
 
 		cat <<EOF
-<div class="card mb-3 border-secondary">
+<div class="border-secondary card mb-3">
 <a data-bs-toggle="collapse" href="#${ID}" role="button" aria-expanded="false" aria-controls="${ID}" class="card-body link-underline link-underline-opacity-0">
-<div class="d-flex w-100 justify-content-between">
+<div class="d-flex justify-content-between w-100">
 <h5 class="card-title mb-1">$BRAND</h5>
 <i class="bi bi-x-circle-fill text-secondary"></i>
 </div>
 <p class="card-text mb-1">$HOSTS</p>
 <small class="card-text text-body-secondary">
-<span class="badge bg-secondary-subtle border border-secondary text-secondary-emphasis rounded-pill text-capitalize">
+<span class="badge bg-secondary-subtle border border-secondary rounded-pill text-capitalize text-secondary-emphasis">
 $STATE
 </span>
-<span class="badge bg-secondary-subtle border border-secondary text-secondary-emphasis rounded-pill text-capitalize">
+<span class="badge bg-secondary-subtle border border-secondary rounded-pill text-capitalize text-secondary-emphasis">
 $([[ "$STARTED" != "" ]] && echo "$STARTED")
 </span>
 </small>

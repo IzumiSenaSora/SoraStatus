@@ -1,2 +1,3 @@
-Name: SoraStatus
-Url: sorastatus.eu.org
+export DESCRIPTION="Server Status of Light Of The Night Sky's Services."
+export NAME="SoraStatus"
+export URL="sorastatus.eu.org"
