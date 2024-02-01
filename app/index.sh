@@ -113,8 +113,7 @@ gen_up() {
 <span class="badge bg-success-subtle border border-success rounded-pill text-capitalize text-success-emphasis">
 $STATE
 </span>
-<span class="badge bg-success-subtle border border-success rounded-pill text-capitalize text-success-emphasis">
-<script>document.write(new Date().toUTCString().replace('GMT', ''));</script>
+<span class="badge bg-success-subtle border border-success index-date rounded-pill text-capitalize text-success-emphasis">
 </span>
 </small>
 </a>
@@ -123,7 +122,7 @@ $STATE
 <div class="card-body">
 <h5 class="card-title text-body-secondary">$STATE</h5>
 <h6 class="card-text fw-normal">
-<strong>Started</strong> - <script>document.write(new Date().toUTCString().replace('GMT', ''));</script>
+<strong>Started</strong> - <span class="index-date"></span>
 </h6>
 <h6 class="card-text fw-normal">
 <strong>Issue</strong> - No Issue
