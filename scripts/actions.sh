@@ -85,7 +85,7 @@ if [[ "$CI" = "true" ]]; then
 
 				index Generate --icons
 			else
-				index Generate
+				index Generate #--icons --production (in future)
 			fi
 		else
 			index Pretty
@@ -98,9 +98,11 @@ if [[ "$CI" = "true" ]]; then
 
 		if [[ -n "$(git status --short)" ]]; then
 
-			if ! [[ "$GITHUB_WORKFLOW" = "Main" ]]; then
+			if [[ "$GITHUB_WORKFLOW" = "Main" ]]; then
 
-				git checkout -b development
+				git checkout -b main-development
+			else
+				git checkout -b staging-development
 			fi
 
 			git add --all
@@ -108,7 +110,7 @@ if [[ "$CI" = "true" ]]; then
 			git commit \
 				--all \
 				--signoff \
-				--message "[Automated CI/CD] Update $(date)
+				--message "[Automated CI/CD] Update ${BRANCH^^} $(date)
 
 Changes:
 
