@@ -57,10 +57,10 @@ gen_down() {
 </div>
 <p class="card-text mb-1">$HOSTS</p>
 <small class="card-text text-body-secondary">
-<span class="badge bg-danger-subtle border border-danger rounded-pill text-capitalize text-danger-emphasis">
+<span class="badge bg-danger-subtle border border-danger rounded-pill text-capitalize text-danger">
 $STATE
 </span>
-<span class="badge bg-danger-subtle border border-danger rounded-pill text-capitalize text-danger-emphasis">
+<span class="badge bg-danger-subtle border border-danger rounded-pill text-capitalize text-danger">
 $([[ "$STARTED" != "" ]] && echo "$STARTED")
 </span>
 </small>
@@ -110,10 +110,10 @@ gen_up() {
 </div>
 <p class="card-text mb-1">$HOSTS</p>
 <small class="card-text text-body-secondary">
-<span class="badge bg-success-subtle border border-success rounded-pill text-capitalize text-success-emphasis">
+<span class="badge bg-success-subtle border border-success rounded-pill text-capitalize text-success">
 $STATE
 </span>
-<span class="badge bg-success-subtle border border-success index-date rounded-pill text-capitalize text-success-emphasis">
+<span class="badge bg-success-subtle border border-success index-date rounded-pill text-capitalize text-success">
 </span>
 </small>
 </a>
@@ -174,10 +174,10 @@ gen_history() {
 </div>
 <p class="card-text mb-1">$HOSTS</p>
 <small class="card-text text-body-secondary">
-<span class="badge bg-secondary-subtle border border-secondary rounded-pill text-capitalize text-secondary-emphasis">
+<span class="badge bg-secondary-subtle border border-secondary rounded-pill text-capitalize text-secondary">
 $STATE
 </span>
-<span class="badge bg-secondary-subtle border border-secondary rounded-pill text-capitalize text-secondary-emphasis">
+<span class="badge bg-secondary-subtle border border-secondary rounded-pill text-capitalize text-secondary">
 $([[ "$STARTED" != "" ]] && echo "$STARTED")
 </span>
 </small>
