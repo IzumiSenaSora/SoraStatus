@@ -176,11 +176,11 @@ $(git status --short)" || true
 
 				if command -v wrangler >/dev/null 2>&1; then
 
-					wrangler pages project create "$REPO" --production-branch main
+					wrangler pages project create "${REPO//_/-}" --production-branch main
 
 					wrangler pages deploy static \
 						--branch main \
-						--project-name "$REPO"
+						--project-name "${REPO//_/-}"
 				fi
 
 			elif [[ "$GITHUB_WORKFLOW" = "Staging" && "$BRANCH" = "staging" ]]; then
@@ -210,11 +210,11 @@ $(git status --short)" || true
 
 				if command -v wrangler >/dev/null 2>&1; then
 
-					wrangler pages project create "$REPO" --production-branch main
+					wrangler pages project create "${REPO//_/-}" --production-branch main
 
 					wrangler pages deploy static \
 						--branch staging \
-						--project-name "$REPO"
+						--project-name "${REPO//_/-}"
 				fi
 			fi
 		fi
