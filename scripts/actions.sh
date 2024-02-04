@@ -169,6 +169,20 @@ $(git status --short)" || true
 					rm --force --recursive static/.vercel
 				fi
 
+				if ! command -v wrangler >/dev/null 2>&1; then
+
+					npm install --global wrangler >/dev/null 2>&1
+				fi
+
+				if command -v wrangler >/dev/null 2>&1; then
+
+					wrangler pages project create "$REPO" --production-branch main
+
+					wrangler pages deploy static \
+						--branch main \
+						--project-name "$REPO"
+				fi
+
 			elif [[ "$GITHUB_WORKFLOW" = "Staging" && "$BRANCH" = "staging" ]]; then
 
 				if ! command -v netlify >/dev/null 2>&1; then
@@ -187,6 +201,20 @@ $(git status --short)" || true
 						--prod >"$TMPDIR/netlify.log"
 
 					grep -i ".netlify.app" "$TMPDIR/netlify.log"
+				fi
+
+				if ! command -v wrangler >/dev/null 2>&1; then
+
+					npm install --global wrangler >/dev/null 2>&1
+				fi
+
+				if command -v wrangler >/dev/null 2>&1; then
+
+					wrangler pages project create "$REPO" --production-branch main
+
+					wrangler pages deploy static \
+						--branch staging \
+						--project-name "$REPO"
 				fi
 			fi
 		fi
