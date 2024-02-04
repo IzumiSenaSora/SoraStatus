@@ -171,7 +171,7 @@ $(git status --short)" || true
 
 				if ! command -v wrangler >/dev/null 2>&1; then
 
-					npm install --global wrangler >/dev/null 2>&1
+					npm install --global wrangler@latest >/dev/null 2>&1
 				fi
 
 				if command -v wrangler >/dev/null 2>&1; then
@@ -187,7 +187,7 @@ $(git status --short)" || true
 
 				if ! command -v netlify >/dev/null 2>&1; then
 
-					npm install --global netlify-cli >/dev/null 2>&1
+					npm install --global netlify-cli@latest >/dev/null 2>&1
 				fi
 
 				if command -v netlify >/dev/null 2>&1; then
@@ -205,7 +205,7 @@ $(git status --short)" || true
 
 				if ! command -v wrangler >/dev/null 2>&1; then
 
-					npm install --global wrangler >/dev/null 2>&1
+					npm install --global wrangler@latest >/dev/null 2>&1
 				fi
 
 				if command -v wrangler >/dev/null 2>&1; then
