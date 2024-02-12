@@ -7,6 +7,7 @@ Download() {
 
 			sudo curl \
 				--doh-url "https://one.soradns.eu.org" \
+				--fail \
 				--http2-prior-knowledge \
 				--location \
 				--output "$1" \

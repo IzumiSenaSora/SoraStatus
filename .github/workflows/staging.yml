@@ -42,4 +42,12 @@ jobs:
                       bash scripts/actions.sh
                   fi
 
-        timeout-minutes: 10
+            - name: Deploy
+              uses: peaceiris/actions-gh-pages@v3
+              if: github.ref == 'refs/heads/staging'
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  publish_branch: staging-pages
+                  publish_dir: ./static
+
+        timeout-minutes: 15
