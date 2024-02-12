@@ -1,0 +1,92 @@
+/*
+  Author: Izumi Sena Sora (UnOrdinary)
+  Cache-Control: public, no-cache
+  Content-Security-Policy: base-uri 'none'; default-src 'none'; child-src 'self'; connect-src 'self'; font-src 'self' https://staging.sorafonts.eu.org; form-action https://form.lotns.eu.org; frame-ancestors 'none'; img-src 'self' data: https: https://staging.soraapis.eu.org; manifest-src 'self'; media-src 'self' data: https://staging.soraapis.eu.org; report-uri https://report.lotns.eu.org/?to=csp; report-to default; script-src 'self' 'unsafe-inline' https://staging.soraapis.eu.org; style-src 'self' 'unsafe-inline' https://staging.soraapis.eu.org https://staging.sorafonts.eu.org; upgrade-insecure-requests; webrtc 'block'
+  Cross-Origin-Embedder-Policy: require-corp
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
+  Link: <https://staging.soraapis.eu.org>; rel=preconnect; crossorigin, <https://staging.sorafonts.eu.org>; rel=preconnect; crossorigin, <https://staging.soracdns.eu.org>; rel=preconnect; crossorigin
+  Origin-Agent-Cluster: ?1
+  Permissions-Policy: accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), bluetooth=(), camera=(), clipboard-read=(), clipboard-write=(), display-capture=(), document-domain=(), encrypted-media=(), fullscreen=(), gamepad=(), geolocation=(), gyroscope=(), hid=(), idle-detection=(), interest-cohort=(), keyboard-map=(), local-fonts=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), speaker-selection=(), sync-xhr=(), usb=(), xr-spatial-tracking=()
+  Powered-By: Light Of The Night Sky (LOTNS)
+  Referrer-Policy: no-referrer
+  Report-To: {"group": "default", "max_age": 31536000, "endpoints": [{"url": "https://report.lotns.eu.org/?to=csp"}], "include_subdomains": true}
+  Reporting-Endpoints: default="https://report.lotns.eu.org/?to=csp"
+  Sec-GPC: 1
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  X-Robots-Tag: none
+  X-XSS-Protection: 0
+
+/*.atom
+  Cache-Control: public, max-age=1800
+
+/*.css
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=31536000, immutable
+  Cross-Origin-Resource-Policy: cross-origin
+
+/*.gif
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=31536000
+  Cross-Origin-Resource-Policy: cross-origin
+
+/*.ico
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=31536000
+  Cross-Origin-Resource-Policy: cross-origin
+
+/*.jpeg
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=31536000
+  Cross-Origin-Resource-Policy: cross-origin
+
+/*.jpg
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=31536000
+  Cross-Origin-Resource-Policy: cross-origin
+
+/*.js
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=31536000, immutable
+  Cross-Origin-Resource-Policy: cross-origin
+
+/*.json
+  Cache-Control: public, max-age=1800
+
+/*.map
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=31536000, immutable
+  Cross-Origin-Resource-Policy: cross-origin
+
+/*.mjs
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=31536000, immutable
+  Cross-Origin-Resource-Policy: cross-origin
+
+/*.png
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=31536000
+  Cross-Origin-Resource-Policy: cross-origin
+
+/*.svg
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=31536000, immutable
+  Cross-Origin-Resource-Policy: cross-origin
+
+/*.txt
+  Cache-Control: public, max-age=1800
+
+/*.webp
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=31536000
+  Cross-Origin-Resource-Policy: cross-origin
+
+/*.woff2
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=31536000, immutable
+  Cross-Origin-Resource-Policy: cross-origin
+
+/*.xml
+  Cache-Control: public, max-age=1800

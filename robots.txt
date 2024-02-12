@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://staging.sorastatus.eu.org/sitemap.xml
