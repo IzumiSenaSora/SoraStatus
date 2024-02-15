@@ -113,7 +113,7 @@ gen_up() {
 <span class="badge bg-success-subtle border border-success rounded-pill text-capitalize text-success">
 $STATE
 </span>
-<span class="badge bg-success-subtle border border-success index-date rounded-pill text-capitalize text-success">
+<span class="badge bg-success-subtle border border-success index-utc-date rounded-pill text-capitalize text-success">
 </span>
 </small>
 </a>
@@ -122,7 +122,7 @@ $STATE
 <div class="card-body">
 <h5 class="card-title text-body-secondary">$STATE</h5>
 <h6 class="card-text fw-normal">
-<strong>Started</strong> - <span class="index-date"></span>
+<strong>Started</strong> - <span class="index-utc-date"></span>
 </h6>
 <h6 class="card-text fw-normal">
 <strong>Issue</strong> - No Issue
