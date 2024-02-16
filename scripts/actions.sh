@@ -56,6 +56,10 @@ if [[ "$CI" = "true" ]]; then
 	export REPO
 	export TIME_DIFF
 
+	sudo apt-get update >/dev/null 2>&1
+
+	sudo apt-get upgrade --yes >/dev/null 2>&1
+
 	if ! command -v npm >/dev/null 2>&1; then
 
 		sudo apt-get install nodejs >/dev/null 2>&1
@@ -79,6 +83,8 @@ if [[ "$CI" = "true" ]]; then
 	if command -v index >/dev/null 2>&1; then
 
 		index --version
+
+		index Setup
 
 		if [[ -d app ]]; then
 
