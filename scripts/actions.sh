@@ -56,9 +56,12 @@ if [[ "$CI" = "true" ]]; then
 	export REPO
 	export TIME_DIFF
 
-	sudo apt-get update >/dev/null 2>&1
+	if [[ "$TIME_DIFF" -lt 3600 ]]; then
 
-	sudo apt-get upgrade --yes >/dev/null 2>&1
+		sudo apt-get update >/dev/null 2>&1
+
+		sudo apt-get upgrade --yes >/dev/null 2>&1
+	fi
 
 	if ! command -v npm >/dev/null 2>&1; then
 
@@ -183,10 +186,12 @@ $(git status --short)" || true
 
 				if command -v wrangler >/dev/null 2>&1; then
 
-					wrangler pages project create "${REPO//_/-}" --production-branch main
+					wrangler pages project create "${REPO//_/-}" \
+						--production-branch main >/dev/null 2>&1
 
 					wrangler pages deploy static \
 						--branch main \
+						--commit-dirty true \
 						--project-name "${REPO//_/-}"
 				fi
 
@@ -217,10 +222,12 @@ $(git status --short)" || true
 
 				if command -v wrangler >/dev/null 2>&1; then
 
-					wrangler pages project create "${REPO//_/-}" --production-branch main
+					wrangler pages project create "${REPO//_/-}" \
+						--production-branch main >/dev/null 2>&1
 
 					wrangler pages deploy static \
 						--branch staging \
+						--commit-dirty true \
 						--project-name "${REPO//_/-}"
 				fi
 			fi
