@@ -132,6 +132,8 @@ $(git status --short)" || true
 		git status --short
 	fi
 
+	git --no-pager diff
+
 	if [[ "$TIME_DIFF" -lt 3600 ]]; then
 
 		if [[ -d static ]]; then
