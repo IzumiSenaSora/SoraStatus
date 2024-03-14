@@ -1,5 +1,5 @@
 #!/bin/bash
 
-export JS="true"
+export JS_BOOTSTRAP="true"
 
 index Status
