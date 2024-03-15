@@ -165,7 +165,7 @@ text-align:center;
 <h1 class="h1">$(grep -q . maintenance.txt && echo -n "Scheduled Maintenance Reminder" || echo -n "Incident Update")</h1>
 <h4 class="h4">SoraStatus System</h4>
 <br />
-<strong>State:</strong> $STATE
+<strong>State:</strong> Service Disruption
 <br />
 <strong>$(grep -q . maintenance.txt && echo -n "Planned Start" || echo -n "Started"):</strong> $DATETIME
 <br />
@@ -176,7 +176,7 @@ text-align:center;
 <br />
 <strong>Name:</strong> $NAME
 <br />
-<strong>Urls:</strong> ${URLS%%;*}
+<strong>Url:</strong> ${URL%%;*}
 <br />
 <strong>Status:</strong> $STATUS
 <br />
@@ -249,13 +249,13 @@ curl \
 	--header "Markdown: yes" \
 	--data "# $(grep -q . maintenance.txt && echo -n "Scheduled Maintenance Reminder" || echo -n "Incident Update")
 
-**State:** $STATE
+**State:** Service Disruption
 **$(grep -q . maintenance.txt && echo -n "Planned Start" || echo -n "Started"):** $DATETIME
 **$(grep -q . maintenance.txt && echo -n "Expected End" || echo -n "Resolved"):** Not Yet
 
 ##### Affected Infrastructure
 **Name:** $NAME
-**Urls:** ${URLS%%;*}
+**Url:** ${URL%%;*}
 **Status:** $STATUS
 
 **$(grep -q . maintenance.txt && echo -n "Details" || echo -n "Update"):** Investigating" \
