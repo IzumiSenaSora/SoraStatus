@@ -167,7 +167,7 @@ text-align:center;
 <br />
 <strong>State:</strong> Service Disruption
 <br />
-<strong>$([[ -s maintenance ]] && echo -n "Planned Start" || echo -n "Started"):</strong> $DATETIME
+<strong>$([[ -s maintenance ]] && echo -n "Planned Start" || echo -n "Started"):</strong> $DATE
 <br />
 <strong>$([[ -s maintenance ]] && echo -n "Expected End" || echo -n "Resolved"):</strong> Not Yet
 <br />
@@ -250,7 +250,7 @@ curl \
 	--data "# $([[ -s maintenance ]] && echo -n "Scheduled Maintenance Reminder" || echo -n "Incident Update")
 
 **State:** Service Disruption
-**$([[ -s maintenance ]] && echo -n "Planned Start" || echo -n "Started"):** $DATETIME
+**$([[ -s maintenance ]] && echo -n "Planned Start" || echo -n "Started"):** $DATE
 **$([[ -s maintenance ]] && echo -n "Expected End" || echo -n "Resolved"):** Not Yet
 
 ##### Affected Infrastructure
