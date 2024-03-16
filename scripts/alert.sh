@@ -4,7 +4,7 @@ MESSAGE=$(
 	cat <<EOM
 From: SoraStatus System <$SMTP_FROM>
 To: Izumi Sena Sora <$SMTP_TO>
-Subject: $(grep -q . maintenance.txt && echo -n "Scheduled Maintenance" || echo -n "Status") Notification From SoraStatus System
+Subject: $([[ -s maintenance ]] && echo -n "Scheduled Maintenance" || echo -n "Status") Notification From SoraStatus System
 Date: $(date --utc '+%a, %d %b %Y %X')
 Mime-Version: 1.0
 Content-Type: text/html; charset=utf-8
@@ -162,26 +162,26 @@ text-align:center;
 <tr>
 <td valign="top">
 <div>
-<h1 class="h1">$(grep -q . maintenance.txt && echo -n "Scheduled Maintenance Reminder" || echo -n "Incident Update")</h1>
+<h1 class="h1">$([[ -s maintenance ]] && echo -n "Scheduled Maintenance Reminder" || echo -n "Incident Update")</h1>
 <h4 class="h4">SoraStatus System</h4>
 <br />
 <strong>State:</strong> Service Disruption
 <br />
-<strong>$(grep -q . maintenance.txt && echo -n "Planned Start" || echo -n "Started"):</strong> $DATETIME
+<strong>$([[ -s maintenance ]] && echo -n "Planned Start" || echo -n "Started"):</strong> $DATETIME
 <br />
-<strong>$(grep -q . maintenance.txt && echo -n "Expected End" || echo -n "Resolved"):</strong> Not Yet
+<strong>$([[ -s maintenance ]] && echo -n "Expected End" || echo -n "Resolved"):</strong> Not Yet
 <br />
 <br />
 <strong>Affected Infrastructure</strong>
 <br />
 <strong>Name:</strong> $NAME
 <br />
-<strong>Url:</strong> ${URL%%;*}
+<strong>Url:</strong> $URL
 <br />
-<strong>Status:</strong> $STATUS
+<strong>Up:</strong> $UP
 <br />
 <br />
-<strong>$(grep -q . maintenance.txt && echo -n "Details" || echo -n "Update"):</strong> Investigating
+<strong>$([[ -s maintenance ]] && echo -n "Details" || echo -n "Update"):</strong> Investigating
 <br />
 </div>
 </td>
@@ -241,22 +241,22 @@ curl \
 	--silent \
 	--show-error \
 	--output /dev/null \
-	--header "Title: $(grep -q . maintenance.txt && echo -n "Scheduled Maintenance" || echo -n "Status") Notification From SoraStatus System" \
+	--header "Title: $([[ -s maintenance ]] && echo -n "Scheduled Maintenance" || echo -n "Status") Notification From SoraStatus System" \
 	--header "Priority: urgent" \
 	--header "Tags: warning" \
 	--header "Click: https://sorastatus.eu.org" \
-	--header "Icon: https://soraapis.eu.org/opengraph.png" \
+	--header "Icon: https://sorastatus.eu.org/opengraph.png" \
 	--header "Markdown: yes" \
-	--data "# $(grep -q . maintenance.txt && echo -n "Scheduled Maintenance Reminder" || echo -n "Incident Update")
+	--data "# $([[ -s maintenance ]] && echo -n "Scheduled Maintenance Reminder" || echo -n "Incident Update")
 
 **State:** Service Disruption
-**$(grep -q . maintenance.txt && echo -n "Planned Start" || echo -n "Started"):** $DATETIME
-**$(grep -q . maintenance.txt && echo -n "Expected End" || echo -n "Resolved"):** Not Yet
+**$([[ -s maintenance ]] && echo -n "Planned Start" || echo -n "Started"):** $DATETIME
+**$([[ -s maintenance ]] && echo -n "Expected End" || echo -n "Resolved"):** Not Yet
 
 ##### Affected Infrastructure
 **Name:** $NAME
-**Url:** ${URL%%;*}
-**Status:** $STATUS
+**Url:** $URL
+**Up:** $UP
 
-**$(grep -q . maintenance.txt && echo -n "Details" || echo -n "Update"):** Investigating" \
+**$([[ -s maintenance ]] && echo -n "Details" || echo -n "Update"):** Investigating" \
 	"$WEBHOOK"
