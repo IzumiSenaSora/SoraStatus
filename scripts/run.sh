@@ -2,4 +2,4 @@
 
 source .env
 
-index StatusGen
+index StatusGen --webhook "$WEBHOOK"

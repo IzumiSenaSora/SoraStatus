@@ -48,6 +48,6 @@ SoraStatus|sorastatus.eu.org
 UnOrdinary|unordinary.eu.org
 #Zinik|zinik.eu.org
 #Curl.One|127.0.0.1
-#Curl.Two|127.0.0.2;CurlHidden
+#Curl.Two|127.0.0.2
 #Ncat.One|127.0.0.1|22
-#Ncat.Two|127.0.0.2;NcatHidden|8443
+#Ncat.Two|127.0.0.2|8443
