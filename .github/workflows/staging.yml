@@ -21,14 +21,14 @@ jobs:
                   echo
 
                   git config --global user.name "Izumi Sena Sora"
-                  git config --global user.email "61591769+IzumiSenaSora@users.noreply.github.com"
+                  git config --global user.email "izumisenasora@users.noreply.github.com"
                   git config --global init.defaultBranch main
                   git config --global pull.rebase false
                   git config --global core.eol lf
                   git config --global core.autocrlf input
                   git config --global http.postBuffer 1048576000
-                  git config --global filter.crypt.smudge "openssl enc -d -chacha20 -S f6735bf5d3c9ed33 -a -pbkdf2 -pass env:AGE -"
-                  git config --global filter.crypt.clean "openssl enc -chacha20 -salt -a -S f6735bf5d3c9ed33 -pbkdf2 -pass env:AGE -"
+                  git config --global filter.crypt.smudge "openssl enc -d -chacha20 -S f6735bf5d3c9ed33 -base64 -pbkdf2 -pass env:AGE -"
+                  git config --global filter.crypt.clean "openssl enc -chacha20 -salt -base64 -S f6735bf5d3c9ed33 -pbkdf2 -pass env:AGE -"
                   git config --global filter.crypt.required true
 
             - uses: actions/checkout@v4

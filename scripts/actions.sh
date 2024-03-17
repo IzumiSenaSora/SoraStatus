@@ -6,7 +6,6 @@ Download() {
 		if command -v curl >/dev/null 2>&1; then
 
 			sudo curl \
-				--doh-url "https://one.soradns.eu.org" \
 				--fail \
 				--http2-prior-knowledge \
 				--location \
@@ -72,7 +71,12 @@ if [[ "$CI" = "true" ]]; then
 
 		sudo cp static/bin/index-latest /bin/index
 	else
-		Download "/bin/index" "https://staging.soracdns.eu.org/bin/index-latest"
+		if [[ "$BRANCH" = "main" ]]; then
+
+			Download "/bin/index" "https://soracdns.eu.org/bin/index-latest"
+		else
+			Download "/bin/index" "https://staging.soracdns.eu.org/bin/index-latest"
+		fi
 
 	fi
 
@@ -85,17 +89,17 @@ if [[ "$CI" = "true" ]]; then
 
 	if command -v index >/dev/null 2>&1; then
 
-		index --version
-
 		index Setup
 
 		if [[ -d app ]]; then
 
-			if [[ "$BRANCH" = "staging" || "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]]; then
+			if [[ "$BRANCH" = "main" ]]; then
+
+				index Generate --icons --production
+
+			elif [[ "$BRANCH" != "main" || "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]]; then
 
 				index Generate --icons
-			else
-				index Generate #--icons --production (in future)
 			fi
 		else
 			index Pretty
@@ -124,7 +128,7 @@ if [[ "$CI" = "true" ]]; then
 
 Changes:
 
-$(git status --short)" || true
+$(git status --short)"
 
 			git push --all origin
 		fi
@@ -149,6 +153,8 @@ $(git status --short)" || true
 
 				source .env
 			fi
+
+			index Optimize
 
 			if [[ "$GITHUB_WORKFLOW" = "Main" && "$BRANCH" = "main" ]]; then
 
@@ -199,16 +205,14 @@ $(git status --short)" || true
 
 			elif [[ "$GITHUB_WORKFLOW" = "Staging" && "$BRANCH" = "staging" ]]; then
 
+				Replace
+
 				if ! command -v netlify >/dev/null 2>&1; then
 
 					npm install --global netlify-cli@latest >/dev/null 2>&1
 				fi
 
 				if command -v netlify >/dev/null 2>&1; then
-
-					index Optimize
-
-					Replace
 
 					netlify deploy \
 						--dir "static" \
